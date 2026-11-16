@@ -66,8 +66,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -78,8 +82,7 @@
               "RelativeToolTip": "Application\\Specifications\\ReceptionistSearchSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T14:16:13.206Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T14:16:13.206Z"
             },
             {
               "$type": "Document",
@@ -91,8 +94,7 @@
               "RelativeToolTip": "Application\\Specifications\\RadiologyOrderWithIncludeSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T14:04:09.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T14:04:09.057Z"
             },
             {
               "$type": "Document",
@@ -104,8 +106,7 @@
               "RelativeToolTip": "Application\\Services\\RadiologistService.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAACYAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T13:57:07.165Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T13:57:07.165Z"
             },
             {
               "$type": "Document",
@@ -115,7 +116,7 @@
               "RelativeDocumentMoniker": "Application\\Services\\RadiologyOrderService.cs",
               "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Services\\RadiologyOrderService.cs",
               "RelativeToolTip": "Application\\Services\\RadiologyOrderService.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAIwKwAAABRAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-16T13:44:22.544Z",
               "EditorCaption": ""
@@ -130,8 +131,7 @@
               "RelativeToolTip": "Application\\Interfaces\\IServices\\IRadiologyOrderService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T13:33:16.153Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T13:33:16.153Z"
             },
             {
               "$type": "Document",
@@ -143,8 +143,7 @@
               "RelativeToolTip": "Application\\Specifications\\RadiologyOrderSearchSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T12:47:32.873Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T12:47:32.873Z"
             },
             {
               "$type": "Document",
@@ -156,8 +155,7 @@
               "RelativeToolTip": "Application\\DTOs\\ResponseDto\\RadiologyOrderResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T12:40:46.763Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T12:40:46.763Z"
             },
             {
               "$type": "Document",
@@ -169,8 +167,7 @@
               "RelativeToolTip": "Domain\\Entities\\RadiologyOrder.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAA7wBsAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T12:39:57.403Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T12:39:57.403Z"
             },
             {
               "$type": "Document",
@@ -182,8 +179,7 @@
               "RelativeToolTip": "Application\\DTOs\\RequestDto\\RadiologyOrderSearchDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T12:36:46.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T12:36:46.298Z"
             },
             {
               "$type": "Document",
@@ -195,8 +191,7 @@
               "RelativeToolTip": "Application\\DTOs\\RequestDto\\CreateRadiologyOrder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T12:33:19.509Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T12:33:19.509Z"
             },
             {
               "$type": "Document",
@@ -208,8 +203,7 @@
               "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IGenericRepository.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAYwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T12:17:20.722Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T12:17:20.722Z"
             },
             {
               "$type": "Document",
@@ -221,8 +215,7 @@
               "RelativeToolTip": "Application\\DTOs\\RequestDto\\PatientSearchDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T12:00:22.131Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T12:00:22.131Z"
             },
             {
               "$type": "Document",
@@ -234,8 +227,7 @@
               "RelativeToolTip": "Application\\Specifications\\PatientSearchSpecification.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T11:57:47.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-16T11:57:47.209Z"
             },
             {
               "$type": "Document",
@@ -247,12 +239,7 @@
               "RelativeToolTip": "Application\\Services\\PatientService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAFYAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-16T11:53:43.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "WhenOpened": "2026-11-16T11:53:43.371Z"
             }
           ]
         }
