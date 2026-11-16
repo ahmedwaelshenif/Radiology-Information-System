@@ -30,9 +30,11 @@ namespace Domain.Entities
         [Required]
         public string AccessionNumber { get; set; } = string.Empty;
 
+        [Required]
         public DateTime OrderedAt { get; set; } = DateTime.UtcNow;
 
-        public DateTime? ScheduledAt { get; set; }
+        [Required]
+        public DateTime ScheduledAt { get; set; }
 
         // Navigation properties
         public ICollection<RadiologyStudy> Studies { get; set; } = new List<RadiologyStudy>();

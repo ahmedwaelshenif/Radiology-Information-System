@@ -1,57 +1,117 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\",
+  "WorkspaceRootPath": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\domain\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\radiologyorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\radiologyorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\domain\\enums\\registerresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\registerresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\application\\specifications\\patientsearchspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\specifications\\patientsearchspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\application\\services\\receptionistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\services\\receptionistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\cdssresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\cdssresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A69B61A1-F9E3-2D00-E23D-252BF378F3CC}|RadiologyInformationSystem\\RadiologyInformationSystem.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\radiologyinformationsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69B61A1-F9E3-2D00-E23D-252BF378F3CC}|RadiologyInformationSystem\\RadiologyInformationSystem.csproj|solutionrelative:radiologyinformationsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\hl7message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\hl7message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\application\\services\\radiologistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\services\\radiologistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\radiologystudy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\radiologystudy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\application\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\treatmentplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\treatmentplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\infrastructure\\specifications\\specificationevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\specifications\\specificationevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\mas\\desktop\\his\\radiologyinformationsystem\\application\\interfaces\\irepositories\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\persistence\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\entities\\radiologyreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\entities\\radiologyreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\treatmentplanstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\treatmentplanstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\studystatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\studystatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\registerresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\registerresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\orderstatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\orderstatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\invoicestatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\invoicestatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\hl7messagestatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\hl7messagestatus .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E528BBC3-1C26-8C35-F682-23718816ADCD}|Domain\\Domain.csproj|solutionrelative:domain\\enums\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\application\\specifications\\patientsearchspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\specifications\\patientsearchspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\application\\services\\receptionistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\services\\receptionistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A69B61A1-F9E3-2D00-E23D-252BF378F3CC}|RadiologyInformationSystem\\RadiologyInformationSystem.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\radiologyinformationsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A69B61A1-F9E3-2D00-E23D-252BF378F3CC}|RadiologyInformationSystem\\RadiologyInformationSystem.csproj|solutionrelative:radiologyinformationsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\application\\services\\radiologistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\services\\radiologistservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\application\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\infrastructure\\specifications\\specificationevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5872AEB3-BAA3-FE31-B0EB-0FB6DBEDCF83}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\specifications\\specificationevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|c:\\users\\ahmed hashem\\desktop\\his\\project\\radiology-information-system\\application\\interfaces\\irepositories\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F80C4E72-27A0-12B5-0634-DD5C11CFB0C1}|Application\\Application.csproj|solutionrelative:application\\interfaces\\irepositories\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -62,176 +122,357 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 15,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Role.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Domain\\Enums\\Role.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\Role.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Domain\\Enums\\Role.cs",
-              "RelativeToolTip": "Domain\\Enums\\Role.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Patient.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\Patient.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Patient.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\Patient.cs",
+              "RelativeToolTip": "Domain\\Entities\\Patient.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwB8AAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:32:05.87Z",
+              "WhenOpened": "2026-11-16T08:26:26.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "HL7MessageStatus .cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\HL7MessageStatus .cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\HL7MessageStatus .cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\HL7MessageStatus .cs",
+              "RelativeToolTip": "Domain\\Enums\\HL7MessageStatus .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T08:23:10.171Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "InvoiceStatus .cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\InvoiceStatus .cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\InvoiceStatus .cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\InvoiceStatus .cs",
+              "RelativeToolTip": "Domain\\Enums\\InvoiceStatus .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T08:22:55.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "StudyStatus .cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\StudyStatus .cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\StudyStatus .cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\StudyStatus .cs",
+              "RelativeToolTip": "Domain\\Enums\\StudyStatus .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T08:22:43.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "OrderStatus .cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\OrderStatus .cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\OrderStatus .cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\OrderStatus .cs",
+              "RelativeToolTip": "Domain\\Enums\\OrderStatus .cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T08:22:22.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TreatmentPlanStatus.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\TreatmentPlanStatus.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\TreatmentPlanStatus.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\TreatmentPlanStatus.cs",
+              "RelativeToolTip": "Domain\\Enums\\TreatmentPlanStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T08:21:31.172Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TreatmentPlan.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\TreatmentPlan.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\TreatmentPlan.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\TreatmentPlan.cs",
+              "RelativeToolTip": "Domain\\Entities\\TreatmentPlan.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABkAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T08:12:54.723Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RegisterResult.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Domain\\Enums\\RegisterResult.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\RegisterResult.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Domain\\Enums\\RegisterResult.cs",
-              "RelativeToolTip": "Domain\\Enums\\RegisterResult.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
+              "Title": "Prescription.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\Prescription.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Prescription.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\Prescription.cs",
+              "RelativeToolTip": "Domain\\Entities\\Prescription.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:30:45.996Z",
+              "WhenOpened": "2026-11-16T08:12:20.276Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Gender.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Domain\\Enums\\Gender.cs",
-              "RelativeDocumentMoniker": "Domain\\Enums\\Gender.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Domain\\Enums\\Gender.cs",
-              "RelativeToolTip": "Domain\\Enums\\Gender.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "MedicalRecord.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\MedicalRecord.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\MedicalRecord.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\MedicalRecord.cs",
+              "RelativeToolTip": "Domain\\Entities\\MedicalRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:30:43.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PatientSearchSpecification.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Specifications\\PatientSearchSpecification.cs",
-              "RelativeDocumentMoniker": "Application\\Specifications\\PatientSearchSpecification.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Specifications\\PatientSearchSpecification.cs",
-              "RelativeToolTip": "Application\\Specifications\\PatientSearchSpecification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:29:50.572Z",
+              "WhenOpened": "2026-11-16T08:11:21.964Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\RadiologyInformationSystem\\Program.cs",
-              "RelativeDocumentMoniker": "RadiologyInformationSystem\\Program.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\RadiologyInformationSystem\\Program.cs",
-              "RelativeToolTip": "RadiologyInformationSystem\\Program.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAALAAAAAAAAAA==",
+              "Title": "HL7Message.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\HL7Message.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\HL7Message.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\HL7Message.cs",
+              "RelativeToolTip": "Domain\\Entities\\HL7Message.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAYwBkAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:28:39.315Z",
+              "WhenOpened": "2026-11-16T08:10:34.507Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Persistence\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\AppDbContext.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Persistence\\AppDbContext.cs",
-              "RelativeToolTip": "Infrastructure\\Persistence\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAwAAAAAAAAAA==",
+              "Title": "Invoice.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\Invoice.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\Invoice.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\Invoice.cs",
+              "RelativeToolTip": "Domain\\Entities\\Invoice.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAAB4AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:27:36.507Z",
+              "WhenOpened": "2026-11-16T08:05:14.275Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "ReceptionistService.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Services\\ReceptionistService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\ReceptionistService.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Services\\ReceptionistService.cs",
-              "RelativeToolTip": "Application\\Services\\ReceptionistService.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Title": "CDSSResult.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\CDSSResult.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\CDSSResult.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\CDSSResult.cs",
+              "RelativeToolTip": "Domain\\Entities\\CDSSResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:27:29.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RadiologistService.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Services\\RadiologistService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\RadiologistService.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Services\\RadiologistService.cs",
-              "RelativeToolTip": "Application\\Services\\RadiologistService.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:27:26.024Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PatientService.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Services\\PatientService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\PatientService.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Services\\PatientService.cs",
-              "RelativeToolTip": "Application\\Services\\PatientService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:24:22.794Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SpecificationEvaluator.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Specifications\\SpecificationEvaluator.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Specifications\\SpecificationEvaluator.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Specifications\\SpecificationEvaluator.cs",
-              "RelativeToolTip": "Infrastructure\\Specifications\\SpecificationEvaluator.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:24:07.024Z",
+              "WhenOpened": "2026-11-16T08:03:13.737Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "IUnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
-              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
-              "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
+              "Title": "RadiologyReport.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\RadiologyReport.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\RadiologyReport.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\RadiologyReport.cs",
+              "RelativeToolTip": "Domain\\Entities\\RadiologyReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:22:49.686Z",
+              "WhenOpened": "2026-11-16T07:59:36.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RadiologyStudy.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\RadiologyStudy.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\RadiologyStudy.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\RadiologyStudy.cs",
+              "RelativeToolTip": "Domain\\Entities\\RadiologyStudy.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAwBYAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T07:56:19.02Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RadiologyOrder.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\RadiologyOrder.cs",
+              "RelativeDocumentMoniker": "Domain\\Entities\\RadiologyOrder.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Entities\\RadiologyOrder.cs",
+              "RelativeToolTip": "Domain\\Entities\\RadiologyOrder.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA7wCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-16T07:52:48.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\Role.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\Role.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\Role.cs",
+              "RelativeToolTip": "Domain\\Enums\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:32:05.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RegisterResult.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\RegisterResult.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\RegisterResult.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\RegisterResult.cs",
+              "RelativeToolTip": "Domain\\Enums\\RegisterResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:30:45.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Gender.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\Gender.cs",
+              "RelativeDocumentMoniker": "Domain\\Enums\\Gender.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Domain\\Enums\\Gender.cs",
+              "RelativeToolTip": "Domain\\Enums\\Gender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:30:43.646Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "PatientSearchSpecification.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Specifications\\PatientSearchSpecification.cs",
+              "RelativeDocumentMoniker": "Application\\Specifications\\PatientSearchSpecification.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Specifications\\PatientSearchSpecification.cs",
+              "RelativeToolTip": "Application\\Specifications\\PatientSearchSpecification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:29:50.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\RadiologyInformationSystem\\Program.cs",
+              "RelativeDocumentMoniker": "RadiologyInformationSystem\\Program.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\RadiologyInformationSystem\\Program.cs",
+              "RelativeToolTip": "RadiologyInformationSystem\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:28:39.315Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Persistence\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Persistence\\AppDbContext.cs",
+              "RelativeToolTip": "Infrastructure\\Persistence\\AppDbContext.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwFQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:27:36.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ReceptionistService.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Services\\ReceptionistService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\ReceptionistService.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Services\\ReceptionistService.cs",
+              "RelativeToolTip": "Application\\Services\\ReceptionistService.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:27:29.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "RadiologistService.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Services\\RadiologistService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\RadiologistService.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Services\\RadiologistService.cs",
+              "RelativeToolTip": "Application\\Services\\RadiologistService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:27:26.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PatientService.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Services\\PatientService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\PatientService.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Services\\PatientService.cs",
+              "RelativeToolTip": "Application\\Services\\PatientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:24:22.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "SpecificationEvaluator.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Specifications\\SpecificationEvaluator.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Specifications\\SpecificationEvaluator.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Specifications\\SpecificationEvaluator.cs",
+              "RelativeToolTip": "Infrastructure\\Specifications\\SpecificationEvaluator.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:24:07.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
+              "RelativeToolTip": "Application\\Interfaces\\IRepositories\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-15T18:22:49.686Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "UnitOfWork.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Repositories\\UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Repositories\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\UnitOfWork.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Repositories\\UnitOfWork.cs",
               "RelativeToolTip": "Infrastructure\\Repositories\\UnitOfWork.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBQAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-11-15T18:22:31.268Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "GenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Repositories\\GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Repositories\\GenericRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Repositories\\GenericRepository.cs",
-              "ToolTip": "C:\\Users\\MAS\\Desktop\\HIS\\RadiologyInformationSystem\\Infrastructure\\Repositories\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\Ahmed Hashem\\Desktop\\his\\project\\Radiology-Information-System\\Infrastructure\\Repositories\\GenericRepository.cs",
               "RelativeToolTip": "Infrastructure\\Repositories\\GenericRepository.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-15T18:22:27.529Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-15T18:22:27.529Z"
             }
           ]
         }
