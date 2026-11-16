@@ -97,6 +97,13 @@ namespace Infrastructure.Persistence
             .Property(p => p.Gender)
             .HasConversion<string>()
             .HasMaxLength(10);
-        }
+
+
+            modelBuilder.Entity<TreatmentPlan>()
+            .HasMany(tp => tp.Prescriptions)
+            .WithOne(p => p.TreatmentPlan)
+            .HasForeignKey(p => p.TreatmentPlanId)
+            .OnDelete(DeleteBehavior.Cascade);
+                }
     }
 }

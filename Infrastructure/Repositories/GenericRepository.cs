@@ -1,6 +1,9 @@
 ﻿
 using Application.Common;
+using Application.DTOs.RequestDto;
+using Application.DTOs.ResponseDto;
 using Application.Interfaces.IRepositories;
+using Domain.Entities;
 using Domain.Specifications;
 using Infrastructure.Persistence;
 using Infrastructure.Specifications;
@@ -110,6 +113,17 @@ namespace Infrastructure.Repositories
                 specification);
 
             return await query.ToListAsync();
+        }
+
+        public async Task<T?> GetEntityWithSpecAsync(
+              ISpecification<T> specification)
+        {
+            var query = SpecificationEvaluator.GetQuery(
+                _dbSet.AsQueryable(),
+                specification,
+                applyPaging: false);
+
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<int> CountAsync(

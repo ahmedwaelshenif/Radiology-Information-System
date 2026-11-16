@@ -18,11 +18,19 @@ namespace Domain.Entities
         public User CreatedByUser { get; set; }
 
         [Required]
+        public string PlanTitle { get; set;  }
+
+        [Required]
         public string PlanDetails { get; set; } = string.Empty;
 
         public DateOnly Date { get; set; } 
 
         [Required]
         public TreatmentPlanStatus Status { get; set; } = TreatmentPlanStatus.Draft;
+
+       
+        public ICollection<Prescription> Prescriptions { get; set; } = new List<Prescription>();
+
+
     }
 }
