@@ -19,6 +19,7 @@ namespace Domain.Entities
         [Required]
         public string Details { get; set; } = string.Empty;
 
-        public DateTime Date { get; set; } = DateTime.UtcNow;
+        [Required]
+        public DateOnly Date { get; set; }
     }
 }

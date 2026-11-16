@@ -16,8 +16,11 @@ namespace Domain.Entities
         public int RecordedByUserId { get; set; }
         public User RecordedByUser { get; set; }
 
-        public string? History { get; set; }
+        [Required]
+        public string ClinicalNotes { get; set; }
 
-        public string? ClinicalNotes { get; set; }
+        [Required]
+        public DateOnly Date { get; set; }
     }
 }
+

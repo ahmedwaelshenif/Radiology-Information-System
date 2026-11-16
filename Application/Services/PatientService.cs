@@ -65,6 +65,8 @@ namespace Application.Services
 
         public async Task<PagedResponse<PatientResponseDto>> SearchAsync(PatientSearchDto searchDto)
         {
+            searchDto.PageNumber = Math.Max(1, searchDto.PageNumber);
+            searchDto.PageSize = Math.Clamp(searchDto.PageSize, 1, 100);
             var specification=new PatientSearchSpecification(searchDto);
             var patients = await _unitOfWork.Repository<Patient>().ListAsync(specification);
             int totalCount = await _unitOfWork.Repository<Patient>().CountAsync(specification);

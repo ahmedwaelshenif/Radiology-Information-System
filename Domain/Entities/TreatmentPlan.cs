@@ -20,7 +20,7 @@ namespace Domain.Entities
         [Required]
         public string PlanDetails { get; set; } = string.Empty;
 
-        public DateTime Date { get; set; } = DateTime.UtcNow;
+        public DateOnly Date { get; set; } 
 
         [Required]
         public TreatmentPlanStatus Status { get; set; } = TreatmentPlanStatus.Draft;
