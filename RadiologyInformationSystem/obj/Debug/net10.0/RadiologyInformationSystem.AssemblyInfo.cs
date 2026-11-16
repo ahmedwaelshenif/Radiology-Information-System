@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RadiologyInformationSystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dfc43bb967c3d52ac19441ca5713962e1639f119")]
 [assembly: System.Reflection.AssemblyProductAttribute("RadiologyInformationSystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RadiologyInformationSystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

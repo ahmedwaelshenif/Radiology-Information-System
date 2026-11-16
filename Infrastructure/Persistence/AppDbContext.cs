@@ -16,6 +16,15 @@ namespace Infrastructure.Persistence
         public DbSet<Patient> Patients => Set<Patient>();
         public DbSet<Radiologist> Radiologists => Set<Radiologist>();
         public DbSet<Receptionist> Receptionists => Set<Receptionist>();
+        public DbSet<MedicalRecord> MedicalRecords { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<TreatmentPlan> TreatmentPlans { get; set; }
+        public DbSet<RadiologyOrder> RadiologyOrders { get; set; }
+        public DbSet<RadiologyStudy> RadiologyStudies { get; set; }
+        public DbSet<RadiologyReport> RadiologyReports { get; set; }
+        public DbSet<CDSSResult> CDSSResults { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<HL7Message> HL7Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -75,6 +84,13 @@ namespace Infrastructure.Persistence
                     .IsRequired()
                     .OnDelete(DeleteBehavior.Restrict);
             });
+
+            // order - invoice (one to one)
+            modelBuilder.Entity<Invoice>().HasIndex(i => i.OrderId).IsUnique();
+
+            // report - study (one to one)
+
+            modelBuilder.Entity<RadiologyReport>().HasIndex(r => r.StudyId).IsUnique();
 
             // Gender configuration
             modelBuilder.Entity<Patient>()
