@@ -25,7 +25,7 @@ namespace Domain.Entities
         public decimal Amount { get; set; }
 
         [Required]
-        public string PaymentMethod { get; set; } = string.Empty;
+        public PaymentMethod PaymentMethod { get; set; }
 
         [Required]
         public InvoiceStatus Status { get; set; } = InvoiceStatus.Pending;
