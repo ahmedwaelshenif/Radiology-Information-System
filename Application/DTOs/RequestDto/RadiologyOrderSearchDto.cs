@@ -12,7 +12,7 @@ namespace Application.DTOs.RequestDto
         public string? PatientName { get; set; }
 
         public string? OrderdByName { get; set; }
-        public string? Modality { get; set; }
+        public Modality? Modality { get; set; }
         public string? BodyPart { get; set; }
         public string? AccessionNumber { get; set; }
         public OrderStatus? Status { get; set; }

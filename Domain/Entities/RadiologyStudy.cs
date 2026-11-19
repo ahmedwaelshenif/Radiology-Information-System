@@ -17,7 +17,7 @@ namespace Domain.Entities
         [Required]
         public string StudyInstanceUID { get; set; } = string.Empty;
 
-        public DateTime StudyDate { get; set; }
+        public DateOnly? StudyDate { get; set; }
 
         [Required]
         public StudyStatus Status { get; set; } = StudyStatus.Pending;

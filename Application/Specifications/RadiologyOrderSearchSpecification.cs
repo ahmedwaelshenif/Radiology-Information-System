@@ -20,8 +20,8 @@ namespace Application.Specifications
                 (string.IsNullOrWhiteSpace(filter.OrderdByName) ||
                     o.OrderedByUser.FullName.Contains(filter.OrderdByName)) &&
 
-                (string.IsNullOrWhiteSpace(filter.Modality) ||
-                    o.Modality.Contains(filter.Modality)) &&
+                (!filter.Modality.HasValue ||
+                    o.Modality == filter.Modality.Value)&&
 
                 (string.IsNullOrWhiteSpace(filter.BodyPart) ||
                     o.BodyPart.Contains(filter.BodyPart)) &&

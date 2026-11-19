@@ -19,7 +19,7 @@ namespace Domain.Entities
         public User OrderedByUser { get; set; }
 
         [Required]
-        public string Modality { get; set; } = string.Empty;
+        public Modality Modality { get; set; }
 
         [Required]
         public string BodyPart { get; set; } = string.Empty;

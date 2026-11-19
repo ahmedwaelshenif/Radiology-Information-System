@@ -39,7 +39,7 @@ namespace Application.Services
             {
                 PatientId = dto.PatientId,
                 OrderedByUserId = orderedByUserId,
-                Modality = dto.Modality.Trim(),
+                Modality = dto.Modality,
                 BodyPart = dto.BodyPart.Trim(),
                 Status = OrderStatus.Scheduled,
                 AccessionNumber = await GenerateAccessionNumberAsync(),
@@ -47,7 +47,28 @@ namespace Application.Services
                 ScheduledAt = dto.ScheduledAt
             };
 
+           
+
+            var availableUids = (await _unitOfWork.Repository<StudyUID>().GetAllAsync(s => s.Modality == dto.Modality))?.ToList()?? new List<StudyUID>();
+
+            if (availableUids.Count == 0)
+            {
+                throw new InvalidOperationException(
+                    $"No StudyInstanceUID available for modality {dto.Modality}");
+            }
+
+            var selectedUid = availableUids[
+                Random.Shared.Next(availableUids.Count)
+            ];
+
+            var study = new RadiologyStudy {
+                Status=StudyStatus.Pending,
+                Order=order,
+                StudyInstanceUID = selectedUid.StudyInstanceUID
+
+            };
             await _unitOfWork.Repository<RadiologyOrder>().AddAsync(order);
+            await _unitOfWork.Repository<RadiologyStudy>().AddAsync(study);
             await _unitOfWork.SaveChangesAsync();
 
         }
@@ -128,6 +149,10 @@ namespace Application.Services
         public Task<RadiologyOrderResponseDto> CancelAsync(int orderId)
             => UpdateStatusAsync(orderId, OrderStatus.Cancelled);
 
+
+
+
+
         // ---------- Helpers ----------
         private async Task<RadiologyOrder> GetTrackedOrderAsync(int orderId)
         {
@@ -177,14 +202,12 @@ namespace Application.Services
             PatientName = o.Patient?.User?.FullName ?? string.Empty,
             OrderedByUserId = o.OrderedByUserId,
             OrderedByName = o.OrderedByUser?.FullName ?? string.Empty,
-            Modality = o.Modality,
+            Modality = o.Modality.ToString(),
             BodyPart = o.BodyPart,
             Status = o.Status,
             AccessionNumber = o.AccessionNumber,
             OrderedAt = o.OrderedAt,
             ScheduledAt = o.ScheduledAt
         };
-
-
     }
 }

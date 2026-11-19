@@ -3,7 +3,7 @@
     public enum StudyStatus
     {
         Pending,
-        InProgress,
+        AwaitingReport,
         Completed,
         Cancelled,
     }

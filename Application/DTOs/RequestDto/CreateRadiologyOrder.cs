@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Application.DTOs.RequestDto
@@ -9,7 +10,7 @@ namespace Application.DTOs.RequestDto
         public int PatientId { get; set; }
 
         [Required]
-        public string Modality { get; set; } = string.Empty;   
+        public Modality Modality { get; set; }    
 
         [Required]
         public string BodyPart { get; set; } = string.Empty;

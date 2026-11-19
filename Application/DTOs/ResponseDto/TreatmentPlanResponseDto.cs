@@ -10,6 +10,7 @@ namespace Application.DTOs.ResponseDto
 
         public int PatientId { get; set; }
 
+        public string PatientName { get; set; }
         public string PlanTitle { get; set; }
 
         public string PlanDetails { get; set; }

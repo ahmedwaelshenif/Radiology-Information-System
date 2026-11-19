@@ -16,7 +16,6 @@ namespace Domain.Entities
         public int CreatedByUserId { get; set; }
         public User CreatedByUser { get; set; }
 
-        // its datatype is string in ERD
-        public string? PdfFile { get; set; }
+        public byte[] PdfFile { get; set; }
     }
 }
