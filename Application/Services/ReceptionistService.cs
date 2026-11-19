@@ -6,6 +6,7 @@ using Application.Specifications;
 using Application.Specifications.ReceptionistSpecifications;
 using Domain.Entities;
 using Domain.Enums;
+using Application.Enums;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

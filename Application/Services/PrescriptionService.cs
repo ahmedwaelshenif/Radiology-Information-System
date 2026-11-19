@@ -7,6 +7,7 @@ using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Application.Enums;
 
 
 namespace Application.Services
