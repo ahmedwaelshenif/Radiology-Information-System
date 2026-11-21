@@ -91,12 +91,12 @@ namespace Application.Services
         {
             RadiologyOrderSearchDto filter = new();
             filter.AccessionNumber = accessionNumber;
-            var orders = await _unitOfWork.Repository<RadiologyOrder>()
-                .ListAsync(new RadiologyOrderSearchSpecification(filter));
+            var order = await _unitOfWork.Repository<RadiologyOrder>()
+                .GetEntityWithSpecAsync(new RadiologyOrderSearchSpecification(filter));
 
-            var order = orders.FirstOrDefault()
-                ?? throw new KeyNotFoundException(
-                    $"Radiology order with accession number '{accessionNumber}' was not found.");
+
+            if(order==null)
+                throw new KeyNotFoundException($"Radiology order with accession number '{accessionNumber}' was not found.");
 
             return ToDto(order);
         }
@@ -151,7 +151,19 @@ namespace Application.Services
 
 
 
+        public async Task<PagedResult<RadiologyOrderResponseDto>> GetAllMyOrdersPagedAsync(int userId,int pageNumber, int pageSize)
+        {
+            return await SearchAsync(new RadiologyOrderSearchDto { UserId= userId , PageNumber = pageNumber,
+                PageSize = pageSize
+            });
+        }
 
+        public async Task<PagedResult<RadiologyOrderResponseDto>> SearchMyOrdersAsync(int userId,RadiologyOrderSearchDto filter)
+        {
+            filter.PatientId = null;
+            filter.UserId = userId;
+            return await SearchAsync(filter);
+        }
 
         // ---------- Helpers ----------
         private async Task<RadiologyOrder> GetTrackedOrderAsync(int orderId)
@@ -207,7 +219,11 @@ namespace Application.Services
             Status = o.Status,
             AccessionNumber = o.AccessionNumber,
             OrderedAt = o.OrderedAt,
-            ScheduledAt = o.ScheduledAt
+            ScheduledAt = o.ScheduledAt,
+            studyId=o.Study.Id,
+            StudyStatus = o.Study.Status,
         };
+
+  
     }
 }

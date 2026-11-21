@@ -37,7 +37,7 @@ namespace Domain.Entities
         public DateTime ScheduledAt { get; set; }
 
         // Navigation properties
-        public ICollection<RadiologyStudy> Studies { get; set; } = new List<RadiologyStudy>();
+        public RadiologyStudy Study { get; set; }
 
         public Invoice? Invoice { get; set; }
 

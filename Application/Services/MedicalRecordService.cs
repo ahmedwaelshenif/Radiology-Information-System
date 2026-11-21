@@ -31,6 +31,7 @@ namespace Application.Services
             await _unitOfWork.SaveChangesAsync();
         }
 
+
         public async Task<PagedResponse<MedicalRecordResponse>> SearchAsync(MedicalRecordSearchDto searchDto)
         {
             searchDto.PageNumber = Math.Max(1, searchDto.PageNumber);
@@ -48,6 +49,20 @@ namespace Application.Services
         }
 
 
+        public async Task<PagedResponse<MedicalRecordResponse>> GetMyRecordsAsync(int userId, int pageNumber, int pageSize)
+        {
+            return await SearchAsync(new MedicalRecordSearchDto { UserId = userId ,PageNumber=pageNumber,PageSize=pageSize});
+        }
+
+        public async Task<PagedResponse<MedicalRecordResponse>> SearchMyRecordsAsync(int userId, MedicalRecordSearchDto searchDto)
+        {
+            searchDto.UserId = userId;
+            searchDto.PatientId = null;
+            return await SearchAsync(searchDto);
+
+        }
+
+     
 
 
         //Helper Methods

@@ -30,6 +30,23 @@ namespace Application.Services
             return ToDto(study);
         }
 
+        public async Task<RadiologyStudyResponseDto> GetMyStudyByIdAsync( int id, int userId)
+        {
+            var specification = new RadiologyStudyWithDetailsSpecification(id,userId);
+            var study = await _unitOfWork.Repository<RadiologyStudy>().GetEntityWithSpecAsync(specification);
+
+            if (study == null)
+                throw new KeyNotFoundException("Radiology study not found.");
+
+            return ToDto(study);
+        }
+
+        public async Task<PagedResponse<RadiologyStudyResponseDto>> GetMyStudiesAsync(int pageSize, int pageNumber, int userId)
+        {
+
+            return await SearchAsync(new RadiologyStudySearchDto { UserId = userId,PageSize=pageSize,PageNumber=pageNumber });
+        }
+
         public async Task<PagedResponse<RadiologyStudyResponseDto>> SearchAsync(RadiologyStudySearchDto searchDto)
         {
             var specification = new RadiologyStudySearchSpecification(searchDto);
@@ -44,6 +61,13 @@ namespace Application.Services
             };
         }
 
+        public async Task<PagedResponse<RadiologyStudyResponseDto>> SearchMyStudiesAsync(int userId,RadiologyStudySearchDto searchDto)
+        {
+            searchDto.PatientId = null;
+            searchDto.UserId = userId;
+            return await SearchAsync(searchDto);
+        }
+
         public async Task UpdateStatusAsync(StudyStatus status, int id)
         {
             var study=await _unitOfWork.Repository<RadiologyStudy>().GetByIdAsync(id);
@@ -56,6 +80,7 @@ namespace Application.Services
             await _unitOfWork.SaveChangesAsync();
         
         }
+
 
 
         //Helper Methods

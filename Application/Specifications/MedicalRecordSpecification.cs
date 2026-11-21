@@ -15,6 +15,11 @@ namespace Infrastructure.Specifications
 
                 &&
 
+                (!searchDto.UserId.HasValue ||
+                 m.Patient.User.Id == searchDto.UserId.Value)
+
+                &&
+
                 (string.IsNullOrWhiteSpace(searchDto.PatientName) ||
                  m.Patient.User.FullName.Contains(searchDto.PatientName))
 

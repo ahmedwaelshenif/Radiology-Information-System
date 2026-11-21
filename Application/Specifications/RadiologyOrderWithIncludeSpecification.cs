@@ -9,6 +9,7 @@ public class RadiologyOrderWithIncludeSpecification : BaseSpecification<Radiolog
     {
         AddInclude(o => o.Patient.User);
         AddInclude(o => o.OrderedByUser);
+        AddInclude(o => o.Study);
         AddOrderBy(o => o.Id);
 
         ApplyPaging(pageNumber, pageSize);

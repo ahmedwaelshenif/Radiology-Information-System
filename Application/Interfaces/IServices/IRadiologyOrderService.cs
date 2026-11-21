@@ -17,12 +17,17 @@ namespace Application.Interfaces.IServices
         Task<PagedResult<RadiologyOrderResponseDto>> GetPagedAsync(
             int pageNumber, int pageSize);
 
+        Task<PagedResult<RadiologyOrderResponseDto>> GetAllMyOrdersPagedAsync(
+           int userId, int pageNumber, int pageSize);
+
         Task<PagedResult<RadiologyOrderResponseDto>> GetByPatientAsync(
             int patientId, int pageNumber, int pageSize);
 
         Task<PagedResult<RadiologyOrderResponseDto>> SearchAsync(
             RadiologyOrderSearchDto filter);
 
+        Task<PagedResult<RadiologyOrderResponseDto>> SearchMyOrdersAsync(
+           int UserId,RadiologyOrderSearchDto filter);
         Task<RadiologyOrderResponseDto> UpdateStatusAsync(
             int orderId, OrderStatus status);
 

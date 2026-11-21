@@ -20,5 +20,8 @@ namespace Application.DTOs.ResponseDto
 
         public DateTime? OrderedAt { get; set; }
         public DateTime? ScheduledAt { get; set; }
+
+        public StudyStatus? StudyStatus { get; set; }
+        public int?studyId { get; set; }
     }
 }

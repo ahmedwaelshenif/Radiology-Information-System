@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.RequestDto;
 using Application.Enums;
 using Application.Interfaces.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RadiologyInformationSystem.Controllers
@@ -16,7 +17,9 @@ namespace RadiologyInformationSystem.Controllers
             _patientService = patientService;
         }
 
+        
         [HttpGet]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<IActionResult> GetAll(int pageNumber=1, int pageSize=10) {
             var result = await _patientService.GetAllAsync(pageNumber, pageSize);
             return Ok(result);
@@ -24,6 +27,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost("register")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult>Register(RegisterPatientDto dto)
         {
             RegisterResult res= await _patientService.Register(dto);
@@ -38,6 +42,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost ("search")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<IActionResult> Search(PatientSearchDto searchDto)
         {
             var res=await _patientService.SearchAsync(searchDto);

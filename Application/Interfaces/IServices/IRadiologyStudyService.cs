@@ -11,6 +11,10 @@ namespace Application.Interfaces.IServices
     {
         Task UpdateStatusAsync(StudyStatus status,int id);
         Task<PagedResponse<RadiologyStudyResponseDto>> SearchAsync(RadiologyStudySearchDto searchDto);
+        Task<PagedResponse<RadiologyStudyResponseDto>> SearchMyStudiesAsync(int userId,RadiologyStudySearchDto searchDto);
+        Task<PagedResponse<RadiologyStudyResponseDto>> GetMyStudiesAsync(int pageSize,int pageNumber,int userId);
         Task<RadiologyStudyResponseDto> GetByIdAsync(int id);
+        Task<RadiologyStudyResponseDto> GetMyStudyByIdAsync(int id, int userId);
+
     }
 }

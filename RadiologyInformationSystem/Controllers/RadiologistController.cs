@@ -3,12 +3,14 @@ using Application.DTOs.ResponseDto;
 using Application.Enums;
 using Application.Interfaces.IServices;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace RadiologyInformationSystem.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+  
     public class RadiologistController : ControllerBase
     {
         private readonly IRadiologistService _RadiologistService;
@@ -18,8 +20,9 @@ namespace RadiologyInformationSystem.Controllers
             _RadiologistService = RadiologistService;
         }
 
-        [HttpPost("register")]
 
+        [HttpPost("register")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Register(RegisterRadiologistDto radiologistDto)
         { 
             var result = await _RadiologistService.Register(radiologistDto);
@@ -37,6 +40,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<PagedResponse<RadiologistResponseDto>>> GetAll([FromQuery] int pageNumber = 1,[FromQuery] int pageSize = 10)
         { 
             var response = await _RadiologistService.GetAllAsync(pageNumber, pageSize);
@@ -44,6 +48,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost("search")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<PagedResponse<RadiologistResponseDto>>> Search(RadiologistSearchDto searchDto)
         {
             var response = await _RadiologistService.SearchAsync(searchDto);

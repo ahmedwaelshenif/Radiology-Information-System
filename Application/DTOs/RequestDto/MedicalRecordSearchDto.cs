@@ -6,6 +6,7 @@ namespace Application.DTOs.RequestDto
 {
     public class MedicalRecordSearchDto
     {
+        public int? UserId { get; set; }
         public int? PatientId { get; set; }
 
         public string? PatientName { get; set; }

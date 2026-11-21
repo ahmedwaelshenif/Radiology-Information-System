@@ -10,6 +10,8 @@ namespace Application.Specifications
             : base(o =>
                 (!filter.OrderId.HasValue || o.Id == filter.OrderId.Value) &&
 
+                (!filter.UserId.HasValue || o.Patient.UserId == filter.UserId.Value) &&
+
                 (!filter.PatientId.HasValue || o.PatientId == filter.PatientId.Value) &&
 
                 (!filter.OrderedByUserId.HasValue || o.OrderedByUserId == filter.OrderedByUserId.Value) &&
@@ -42,6 +44,7 @@ namespace Application.Specifications
         {
             AddInclude(o => o.Patient.User);
             AddInclude(o => o.OrderedByUser);
+            AddInclude(o => o.Study);
             AddOrderBy(o => o.Id);
 
             ApplyPaging(filter.PageNumber, filter.PageSize);

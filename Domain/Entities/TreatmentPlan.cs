@@ -26,7 +26,7 @@ namespace Domain.Entities
         public DateOnly Date { get; set; } 
 
         [Required]
-        public TreatmentPlanStatus Status { get; set; } = TreatmentPlanStatus.Draft;
+        public TreatmentPlanStatus Status { get; set; } = TreatmentPlanStatus.Active;
 
        
         public ICollection<Prescription> Prescriptions { get; set; } = new List<Prescription>();

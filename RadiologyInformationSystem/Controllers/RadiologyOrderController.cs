@@ -5,7 +5,9 @@ using Application.Enums;
 using Application.Interfaces.IServices;
 using Application.Services;
 using Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace RadiologyInformationSystem.Controllers
 {
@@ -21,15 +23,14 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost("Create")]
-
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult> Create(
-             CreateRadiologyOrderDto dto,
-             int orderedByUserId)
+             CreateRadiologyOrderDto dto)
         {
-
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             try
             {
-                await _RadiologyOrderService.CreateAsync(dto, orderedByUserId);
+                await _RadiologyOrderService.CreateAsync(dto, userId);
                 return StatusCode(StatusCodes.Status201Created, new { message = "Radiology order created successfully." });
             }
             catch (KeyNotFoundException ex)
@@ -47,7 +48,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpGet]
-
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> GetAll(int pageNumber = 1,int pageSize = 10)
         {
 
@@ -58,6 +59,7 @@ namespace RadiologyInformationSystem.Controllers
 
 
         [HttpGet("{orderId:int}")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<RadiologyOrderResponseDto>> GetById(int orderId)
         {
             try
@@ -72,6 +74,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpGet("accession/{accessionNumber}")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<RadiologyOrderResponseDto>> GetByAccessionNumber(string accessionNumber)
         {
             try
@@ -85,6 +88,7 @@ namespace RadiologyInformationSystem.Controllers
             }
         }
         [HttpGet("patient/{patientId:int}")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> GetByPatient(
             int patientId,
             int pageNumber = 1,
@@ -95,14 +99,16 @@ namespace RadiologyInformationSystem.Controllers
             return Ok(result);
         }
         [HttpPost("search")]
-        public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> Search([FromQuery] RadiologyOrderSearchDto filter)
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
+        public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> Search([FromBody] RadiologyOrderSearchDto filter)
         {
             var result = await _RadiologyOrderService.SearchAsync(filter);
             return Ok(result);
         }
 
         [HttpPatch("{orderId:int}/status")]
-        public async Task<ActionResult<RadiologyOrderResponseDto>> UpdateStatus(int orderId,OrderStatus status)
+        [Authorize(Roles = "Admin,Radiologist")]
+        public async Task<ActionResult<RadiologyOrderResponseDto>> UpdateStatus(int orderId, [FromQuery] OrderStatus status)
         {
             try
             {
@@ -119,8 +125,9 @@ namespace RadiologyInformationSystem.Controllers
             }
         }
 
-        // POST api/radiologyorders/{orderId:int}/cancel
-        [HttpPost("{orderId:int}/cancel")]
+
+        [HttpPatch("{orderId:int}/cancel")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<ActionResult<RadiologyOrderResponseDto>> Cancel(int orderId)
         {
             try
@@ -136,6 +143,32 @@ namespace RadiologyInformationSystem.Controllers
             {
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        [HttpGet("my-orders")]
+        [Authorize(Roles = "Patient")]
+        public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> GetMyOrders(
+                [FromQuery] int pageNumber = 1,
+                [FromQuery] int pageSize = 10)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+            var result = await _RadiologyOrderService.GetAllMyOrdersPagedAsync(
+                userId, pageNumber, pageSize);
+
+            return Ok(result);
+        }
+
+        [HttpPost("my-orders/search")]
+        [Authorize(Roles = "Patient")]
+        public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> SearchMyOrders(
+               [FromBody] RadiologyOrderSearchDto filter)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+            var result = await _RadiologyOrderService.SearchMyOrdersAsync(userId, filter);
+
+            return Ok(result);
         }
     }
 }

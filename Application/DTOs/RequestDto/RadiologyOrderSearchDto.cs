@@ -7,6 +7,7 @@ namespace Application.DTOs.RequestDto
     {
         public int? OrderId { get; set; }
         public int? PatientId { get; set; }
+        public int? UserId { get; set; }
         public int? OrderedByUserId { get; set; }
 
         public string? PatientName { get; set; }

@@ -8,8 +8,11 @@ namespace Application.Interfaces.IServices
 {
     public interface IMedicalRecordService
     {
-        public Task<PagedResponse<MedicalRecordResponse>> SearchAsync(MedicalRecordSearchDto searchDto);
         public Task CreateAsync(MedicalRecordRequestDto medicalRecordRequestDto, int recordedByUserId);
+        public Task<PagedResponse<MedicalRecordResponse>> SearchAsync(MedicalRecordSearchDto searchDto);
+        Task<PagedResponse<MedicalRecordResponse>>GetMyRecordsAsync(int userId, int pageNumber, int pageSize);
+        Task<PagedResponse<MedicalRecordResponse>>SearchMyRecordsAsync(int userId, MedicalRecordSearchDto searchDto);
+
 
     }
 }

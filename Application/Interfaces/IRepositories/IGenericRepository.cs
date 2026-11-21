@@ -18,6 +18,8 @@ namespace Application.Interfaces.IRepositories
 
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
 
+        Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate);
+
         Task AddAsync(T entity);
 
         void Update(T entity);

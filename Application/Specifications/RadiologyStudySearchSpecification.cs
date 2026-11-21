@@ -14,6 +14,9 @@ namespace Application.Specifications
                 (!filter.StudyId.HasValue ||
                     s.Id == filter.StudyId.Value) &&
 
+                (!filter.UserId.HasValue ||
+                    s.Order.Patient.UserId == filter.UserId.Value) &&
+
                 (!filter.OrderId.HasValue ||
                     s.OrderId == filter.OrderId.Value) &&
 

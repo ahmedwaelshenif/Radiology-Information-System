@@ -44,7 +44,10 @@ namespace Infrastructure.Repositories
         {
             return await _dbSet.AnyAsync(predicate);
         }
-
+        public async Task<T?> FirstOrDefaultAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.FirstOrDefaultAsync(predicate);
+        }
 
         public async Task<PagedResult<T>> GetPagedAsync(int pageNumber,int pageSize)
         {

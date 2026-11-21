@@ -7,8 +7,8 @@ namespace Application.Specifications
     public class RadiologyStudyWithDetailsSpecification
         : BaseSpecification<RadiologyStudy>
     {
-        public RadiologyStudyWithDetailsSpecification(int studyId)
-            : base(s => s.Id == studyId)
+        public RadiologyStudyWithDetailsSpecification(int studyId,int? UserID=null)
+            : base(s => s.Id == studyId && (!UserID.HasValue || s.Order.Patient.UserId == UserID.Value))
         {
             AddInclude(s => s.Order);
 

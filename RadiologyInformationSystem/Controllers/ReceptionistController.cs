@@ -1,6 +1,7 @@
 ﻿using Application.DTOs.RequestDto;
 using Application.Enums;
 using Application.Interfaces.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult> GetAll(int pageNumber = 1, int pageSize = 10)
         {
             var result = await _receptionistService.GetAllAsync(pageNumber, pageSize);
@@ -26,11 +28,12 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost("register")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Register(RegisterReceptionistDto dto)
         {
             RegisterResult res = await _receptionistService.Register(dto);
             if (res == RegisterResult.Success)
-                return Ok("Patient registered successfully.");
+                return Ok("Receptionist registered successfully.");
 
             if (res == RegisterResult.EmailAlreadyExists)
                 return Conflict("Email already exists.");
@@ -40,6 +43,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost("search")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult> Search(ReceptionistSearchDto searchDto)
         {
             var res = await _receptionistService.SearchAsync(searchDto);

@@ -2,8 +2,10 @@
 using Application.DTOs.ResponseDto;
 using Application.Interfaces.IServices;
 using Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace RadiologyInformationSystem.Controllers
 {
@@ -19,6 +21,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPatch("status/{id:int}")]
+        [Authorize(Roles = "Admin,Radiologist")]
         public async Task<IActionResult> UpdateStatus(int id, [FromBody] StudyStatus status)
         {
             if (!Enum.IsDefined(typeof(StudyStatus), status))
@@ -39,19 +42,69 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost("search")]
-        public async Task<IActionResult> Search(RadiologyStudySearchDto searchDto)
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
+        public async Task<IActionResult> Search([FromBody]  RadiologyStudySearchDto searchDto)
         {
             var res = await _radiologyStudyService.SearchAsync(searchDto);
             return Ok(res);
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<IActionResult> GetById(int id)
         {
             var res = await _radiologyStudyService.GetByIdAsync(id);
             if (res == null)
                 return NotFound("Radiology study not found.");
             return Ok(res);
+        }
+
+
+        [HttpGet("my-studies")]
+        [Authorize(Roles = "Patient")]
+        public async Task<IActionResult> GetMyStudies(
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 10)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+            var result = await _radiologyStudyService.GetMyStudiesAsync(
+                pageSize, pageNumber, userId);
+
+            return Ok(result);
+        }
+
+        [HttpPost("my-studies/search")]
+        [Authorize(Roles = "Patient")]
+        public async Task<IActionResult> SearchMyStudies(
+            [FromBody] RadiologyStudySearchDto searchDto)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+            var result = await _radiologyStudyService.SearchMyStudiesAsync(
+                userId, searchDto);
+
+            return Ok(result);
+        }
+
+
+        [HttpGet("my-studies/{id:int}")]
+        [Authorize(Roles = "Patient")]
+        public async Task<IActionResult> GetMyStudyById(int id)
+        {
+            var userId = int.Parse(
+                User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            try
+            {
+                var result = await _radiologyStudyService
+                    .GetMyStudyByIdAsync(id, userId);
+
+                return Ok(result);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }
