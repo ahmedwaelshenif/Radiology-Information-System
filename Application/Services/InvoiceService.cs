@@ -107,15 +107,15 @@ namespace Application.Services
             var invoice = await GetTrackedInvoiceAsync(invoiceId);
 
             // Cancelled and Refunded are final states
-            if (invoice.Status == InvoiceStatus.Cancelled || invoice.Status == InvoiceStatus.Refunded)
+            if (invoice.Status == InvoiceStatus.Cancelled )
                 throw new InvalidOperationException(
                     $"Invoice is already {invoice.Status} and cannot be changed.");
 
             // Allowed transitions: Pending -> Paid | Cancelled, Paid -> Refunded
             var allowed =
                 (invoice.Status == InvoiceStatus.Pending &&
-                    (status == InvoiceStatus.Paid || status == InvoiceStatus.Cancelled)) ||
-                (invoice.Status == InvoiceStatus.Paid && status == InvoiceStatus.Refunded);
+                    (status == InvoiceStatus.Paid || status == InvoiceStatus.Cancelled));
+               
 
             if (!allowed)
                 throw new InvalidOperationException(
@@ -153,6 +153,20 @@ namespace Application.Services
                 PageSize = pageSize
             });
         }
+        public async Task<int> CountAllInvoicesByStatus(InvoiceStatus ?status=null)
+        {
+            if (status == null)
+            {
+                return await _unitOfWork.Repository<Invoice>().CountAsync();
+            }
+            else
+            {
+                return await _unitOfWork.Repository<Invoice>().CountAsync(i=>i.Status==status);
+
+            }
+        }
+
+
 
 
 

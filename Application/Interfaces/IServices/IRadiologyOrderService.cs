@@ -1,6 +1,8 @@
 ﻿using Application.Common;
 using Application.DTOs.RequestDto;
 using Application.DTOs.ResponseDto;
+using Application.Interfaces.IRepositories;
+using Domain.Entities;
 using Domain.Enums;
 
 namespace Application.Interfaces.IServices
@@ -30,5 +32,10 @@ namespace Application.Interfaces.IServices
            int UserId,RadiologyOrderSearchDto filter);
      
         Task CancelAsync(int orderId);
+
+        Task<int> CountAllOrdersByStatus(OrderStatus ?status=null);
+
+
+
     }
 }

@@ -167,5 +167,16 @@ namespace RadiologyInformationSystem.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+        [HttpGet("count-By-Status")]
+        [Authorize(Roles = "Admin,Radiologist")]
+        public async Task<ActionResult<int>> CountByStatus([FromQuery] InvoiceStatus ?status=null)
+        {
+
+                int cnt = await _InvoiceService.CountAllInvoicesByStatus(status);
+                return Ok(cnt);
+        }
+
+
     }
 }

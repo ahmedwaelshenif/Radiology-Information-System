@@ -20,7 +20,7 @@ namespace Application.Services
         }
 
 
-       public async Task CreateAsync(CreateRadiologyOrderDto dto, int orderedByUserId)
+        public async Task CreateAsync(CreateRadiologyOrderDto dto, int orderedByUserId)
         {
             var patientExists = await _unitOfWork.Repository<Patient>()
                 .AnyAsync(p => p.Id == dto.PatientId);
@@ -32,7 +32,7 @@ namespace Application.Services
             if (!userIsActive)
                 throw new KeyNotFoundException($"Active user {orderedByUserId} was not found.");
 
-            if ( dto.ScheduledAt <= DateTime.UtcNow)
+            if (dto.ScheduledAt <= DateTime.UtcNow)
                 throw new ArgumentException("ScheduledAt must be in the future.");
 
             var order = new RadiologyOrder
@@ -47,9 +47,9 @@ namespace Application.Services
                 ScheduledAt = dto.ScheduledAt
             };
 
-           
 
-            var availableUids = (await _unitOfWork.Repository<StudyUID>().GetAllAsync(s => s.Modality == dto.Modality))?.ToList()?? new List<StudyUID>();
+
+            var availableUids = (await _unitOfWork.Repository<StudyUID>().GetAllAsync(s => s.Modality == dto.Modality))?.ToList() ?? new List<StudyUID>();
 
             if (availableUids.Count == 0)
             {
@@ -62,8 +62,8 @@ namespace Application.Services
             ];
 
             var study = new RadiologyStudy {
-                Status=StudyStatus.Pending,
-                Order=order,
+                Status = StudyStatus.Pending,
+                Order = order,
                 StudyInstanceUID = selectedUid.StudyInstanceUID
 
             };
@@ -95,7 +95,7 @@ namespace Application.Services
                 .GetEntityWithSpecAsync(new RadiologyOrderSearchSpecification(filter));
 
 
-            if(order==null)
+            if (order == null)
                 throw new KeyNotFoundException($"Radiology order with accession number '{accessionNumber}' was not found.");
 
             return ToDto(order);
@@ -138,7 +138,7 @@ namespace Application.Services
             if (order == null)
                 throw new KeyNotFoundException("Order doesn't Exist");
 
-            
+
             if (order.Status == OrderStatus.Completed || order.Status == OrderStatus.Cancelled)
                 throw new InvalidOperationException(
                     $"Order is already {order.Status} and cannot be changed.");
@@ -148,25 +148,43 @@ namespace Application.Services
             order.Study.Status = StudyStatus.Cancelled;
 
             await SaveAsync(order);
-          
+
         }
 
 
 
 
-        public async Task<PagedResult<RadiologyOrderResponseDto>> GetAllMyOrdersPagedAsync(int userId,int pageNumber, int pageSize)
+        public async Task<PagedResult<RadiologyOrderResponseDto>> GetAllMyOrdersPagedAsync(int userId, int pageNumber, int pageSize)
         {
-            return await SearchAsync(new RadiologyOrderSearchDto { UserId= userId , PageNumber = pageNumber,
+            return await SearchAsync(new RadiologyOrderSearchDto { UserId = userId, PageNumber = pageNumber,
                 PageSize = pageSize
             });
         }
 
-        public async Task<PagedResult<RadiologyOrderResponseDto>> SearchMyOrdersAsync(int userId,RadiologyOrderSearchDto filter)
+        public async Task<PagedResult<RadiologyOrderResponseDto>> SearchMyOrdersAsync(int userId, RadiologyOrderSearchDto filter)
         {
             filter.PatientId = null;
             filter.UserId = userId;
             return await SearchAsync(filter);
         }
+
+        public async Task<int> CountAllOrdersByStatus(OrderStatus? status = null)
+        {
+            if (status == null)
+            {
+                return await _unitOfWork.Repository<RadiologyOrder>().CountAsync();
+            }
+            else
+            {
+                return await _unitOfWork.Repository<RadiologyOrder>().CountAsync(o=>o.Status==status);
+
+            }
+        }
+
+
+
+
+
 
         // ---------- Helpers ----------
         private async Task<RadiologyOrder> GetTrackedOrderAsync(int orderId)
@@ -227,6 +245,6 @@ namespace Application.Services
             StudyStatus = o.Study.Status,
         };
 
-  
+
     }
 }

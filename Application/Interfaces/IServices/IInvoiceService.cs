@@ -1,6 +1,8 @@
 ﻿using Application.Common;
 using Application.DTOs.RequestDto;
 using Application.DTOs.ResponseDto;
+using Application.Interfaces.IRepositories;
+using Domain.Entities;
 using Domain.Enums;
 
 namespace Application.Interfaces.IServices
@@ -33,5 +35,8 @@ namespace Application.Interfaces.IServices
             int invoiceId, InvoiceStatus status);
 
         Task<InvoiceResponseDto> CancelAsync(int invoiceId);
+
+        Task<int> CountAllInvoicesByStatus(InvoiceStatus? status = null);
+
     }
 }

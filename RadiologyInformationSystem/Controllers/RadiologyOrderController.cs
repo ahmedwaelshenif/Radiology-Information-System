@@ -98,6 +98,7 @@ namespace RadiologyInformationSystem.Controllers
             var result = await _RadiologyOrderService.GetByPatientAsync(patientId, pageNumber, pageSize);
             return Ok(result);
         }
+
         [HttpGet("search")]
         [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> Search([FromQuery] RadiologyOrderSearchDto filter)
@@ -151,5 +152,15 @@ namespace RadiologyInformationSystem.Controllers
 
             return Ok(result);
         }
+
+
+        [HttpGet("Count-By-Status")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
+        public async Task<ActionResult<int>> CountByStatus([FromQuery] OrderStatus ?status=null)
+        {
+            var result = await _RadiologyOrderService.CountAllOrdersByStatus(status);
+            return Ok(result);
+        }
+
     }
 }

@@ -106,5 +106,13 @@ namespace RadiologyInformationSystem.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [HttpGet("Count-By-Status")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist")]
+        public async Task<IActionResult> CountAllByStatus([FromQuery] StudyStatus ?status=null)
+        {
+            var res = await _radiologyStudyService.CountByStatus(status);
+            return Ok(res);
+        }
     }
 }

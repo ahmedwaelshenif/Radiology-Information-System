@@ -90,6 +90,17 @@ namespace Application.Services
             await _unitOfWork.SaveChangesAsync();
         
         }
+        public async Task<int> CountByStatus(StudyStatus ?status=null)
+        { 
+            if(status==null)
+                return await _unitOfWork.Repository<RadiologyStudy>().CountAsync();
+            else
+            {
+                return await _unitOfWork.Repository<RadiologyStudy>().CountAsync(s=>s.Status==status);
+            }
+        }
+     
+
 
 
 

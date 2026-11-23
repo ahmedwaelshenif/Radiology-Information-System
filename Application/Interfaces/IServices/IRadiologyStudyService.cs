@@ -1,5 +1,7 @@
 ﻿using Application.DTOs.RequestDto;
 using Application.DTOs.ResponseDto;
+using Application.Interfaces.IRepositories;
+using Domain.Entities;
 using Domain.Enums;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,13 @@ namespace Application.Interfaces.IServices
         Task<PagedResponse<RadiologyStudyResponseDto>> GetMyStudiesAsync(int pageSize,int pageNumber,int userId);
         Task<RadiologyStudyResponseDto> GetByIdAsync(int id);
         Task<RadiologyStudyResponseDto> GetMyStudyByIdAsync(int id, int userId);
+
+        Task<int> CountByStatus(StudyStatus? status = null);
+
+
+
+
+
 
     }
 }
