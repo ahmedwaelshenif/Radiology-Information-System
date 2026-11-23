@@ -22,5 +22,12 @@ namespace Application.Interfaces.IServices
             int reportId, UpdateRadiologyReportDto dto);
 
         Task DeleteAsync(int reportId);
+
+        Task<PagedResult<RadiologyReportResponseDto>> SearchMyReportsAsync(
+            RadiologyReportSearchDto filter, int userId);
+
+        Task<PagedResult<RadiologyReportResponseDto>> GetAllMyReportsAsync(int pageNumber, int pageSize, int userId);
+
+        Task<byte[]> GetMyPdfAsync(int reportId, int userId);
     }
 }

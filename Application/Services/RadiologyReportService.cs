@@ -8,6 +8,7 @@ using Application.Specifications;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Specifications;
+using static System.Net.WebRequestMethods;
 
 namespace Application.Services
 {
@@ -88,6 +89,12 @@ namespace Application.Services
 
             return await ListPagedAsync(spec);
         }
+        public async Task<PagedResult<RadiologyReportResponseDto>> GetAllMyReportsAsync(int pageNumber, int pageSize,int userId)
+        {
+            var filter = new RadiologyReportSearchDto{ PageNumber = pageNumber, PageSize = pageSize, UserId = userId };
+            var spec = new RadiologyReportSearchSpecification(filter);
+            return await ListPagedAsync(spec);
+        }
         public async Task<RadiologyReportResponseDto> GetByIdAsync(
             int reportId)
         {
@@ -109,10 +116,27 @@ namespace Application.Services
             var report = await GetTrackedReportAsync(reportId);
             return report.PdfFile;
         }
+        public async Task<byte[]> GetMyPdfAsync(int reportId,int userId)
+        {
+            var report = await _unitOfWork.Repository<RadiologyReport>().FirstOrDefaultAsync
+                (r=> r.Id== reportId && r.Study.Order.Patient.UserId==userId);
+            if(report == null)
+            {
+                throw new KeyNotFoundException($"Radiology report {reportId} was not found.");
+            }
+            return report.PdfFile;
+        }
 
         public async Task<PagedResult<RadiologyReportResponseDto>> SearchAsync(
             RadiologyReportSearchDto filter)
         {
+            var spec = new RadiologyReportSearchSpecification(filter);
+            return await ListPagedAsync(spec);
+        }
+        public async Task<PagedResult<RadiologyReportResponseDto>> SearchMyReportsAsync(
+            RadiologyReportSearchDto filter,int userId)
+        {
+            filter.UserId = userId;
             var spec = new RadiologyReportSearchSpecification(filter);
             return await ListPagedAsync(spec);
         }
