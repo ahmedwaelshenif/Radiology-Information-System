@@ -34,14 +34,19 @@ namespace Application.Services
             await _unitOfWork.SaveChangesAsync();
         }
 
-        public async Task<bool> CancelTreatmentPlanAsync(int id)
+        public async Task UpdateTreatmentPlanStatusAsync(int id,bool status)
         {
             var treatmentPlan=await _unitOfWork.Repository<TreatmentPlan>().GetByIdAsync(id);
             if (treatmentPlan == null)
-                return false;
-            treatmentPlan.Status = TreatmentPlanStatus.Cancelled;
+                throw new KeyNotFoundException("Treatment Plan not found");
+            if (treatmentPlan.Status != TreatmentPlanStatus.Active)
+                throw new InvalidOperationException("status can't be updated");
+
+            if(status)
+                treatmentPlan.Status = TreatmentPlanStatus.Completed;
+            else treatmentPlan.Status = TreatmentPlanStatus.Cancelled;
             await _unitOfWork.SaveChangesAsync();
-            return true;
+            
         }
 
         public async Task<TreatmentPlanResponseDto?> GetByIdAsync(int id)
@@ -57,6 +62,36 @@ namespace Application.Services
         {
             return await SearchAsync(new TreatmentPlanSearchDto { PatientId = id });
         }
+
+
+        public async Task<TreatmentPlanResponseDto?> GetMyTreatmentPlanByIdAsync(int id, int userId)
+        {
+            var res= await _unitOfWork.Repository<TreatmentPlan>().FirstOrDefaultAsync(t => t.Id == id && t.Patient.UserId == userId);
+            if (res == null)
+                throw new KeyNotFoundException("TreatmentPlan not found");
+            return ToDto(res);
+        }
+
+        public async Task<PagedResponse<TreatmentPlanResponseDto>> SearchMyTreatmentPlansAsync(TreatmentPlanSearchDto searchDto, int userId)
+        {
+            searchDto.UserId = userId;
+            searchDto.PatientId = null;
+            searchDto.PatientName = null;
+            return await SearchAsync(searchDto);
+        }
+
+        public async Task<PagedResponse<TreatmentPlanResponseDto>> GetAllMyTreatmentPlansAsync(int pageNumber, int pageSize, int userId)
+        {
+            return await SearchAsync(new TreatmentPlanSearchDto
+            {
+                UserId=userId,
+                PageNumber=pageNumber,
+                PageSize=pageSize
+            });
+        }
+
+
+
 
         public async Task<PagedResponse<TreatmentPlanResponseDto>> SearchAsync(TreatmentPlanSearchDto searchDto)
         {
@@ -99,5 +134,7 @@ namespace Application.Services
                 PatientName = treatmentPlan.Patient.User.FullName
             };
         }
+
+     
     }
 }

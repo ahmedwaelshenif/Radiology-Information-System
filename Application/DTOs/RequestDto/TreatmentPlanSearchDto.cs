@@ -8,6 +8,7 @@ namespace Application.DTOs.RequestDto
     {
         public int? Id { get; set; }
         public int? PatientId { get; set; }
+        public int? UserId { get; set; }
         public string? PatientName { get; set; }
         public string? PlanTitle { get; set; }
         public DateOnly? Date { get; set; }

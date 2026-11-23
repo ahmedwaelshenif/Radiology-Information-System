@@ -10,7 +10,11 @@ namespace Application.Specifications
             : base(tp =>
                 (!searchDto.PatientId.HasValue ||
                     tp.PatientId == searchDto.PatientId.Value)
-                
+                &&
+
+                  (!searchDto.UserId.HasValue ||
+                    tp.Patient.UserId == searchDto.UserId.Value)
+
                 && (!searchDto.Id.HasValue ||
                     tp.Id == searchDto.Id.Value)
 
