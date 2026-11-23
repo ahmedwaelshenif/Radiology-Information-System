@@ -25,7 +25,7 @@ namespace Domain.Entities
         public string BodyPart { get; set; } = string.Empty;
 
         [Required]
-        public OrderStatus Status { get; set; } = OrderStatus.Ordered;
+        public OrderStatus Status { get; set; } = OrderStatus.Scheduled;
 
         [Required]
         public string AccessionNumber { get; set; } = string.Empty;
@@ -39,7 +39,7 @@ namespace Domain.Entities
         // Navigation properties
         public RadiologyStudy Study { get; set; }
 
-        public Invoice? Invoice { get; set; }
+        public Invoice Invoice { get; set; }
 
         public ICollection<HL7Message> HL7Messages { get; set; } = new List<HL7Message>();
     }

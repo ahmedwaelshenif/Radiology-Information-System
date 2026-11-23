@@ -23,29 +23,11 @@ namespace RadiologyInformationSystem.Controllers
             _InvoiceService = InvoiceService;
         }
 
-        [HttpPost("Create")]
-        [Authorize(Roles = "Receptionist")]
-        public async Task<IActionResult> Create( CreateInvoiceDto dto)
-        {
-
-            try
-            {
-                await _InvoiceService.CreateAsync(dto);
-                return StatusCode(StatusCodes.Status201Created, new { message = "Invoice created successfully." });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-        }
+       
 
         [HttpGet]
         [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<PagedResult<InvoiceResponseDto>>> GetAll(int pageNumber = 1,int pageSize = 10) //////
+        public async Task<IActionResult> GetAll(int pageNumber = 1,int pageSize = 10) 
         {
 
             var result = await _InvoiceService.GetPagedAsync(pageNumber, pageSize);
@@ -55,7 +37,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("my-invoices")]
         [Authorize(Roles = "Patient")]
-        public async Task<ActionResult<PagedResult<InvoiceResponseDto>>> GetAllMyInvoices(int pageNumber = 1, int pageSize = 10) //////
+        public async Task<IActionResult> GetAllMyInvoices(int pageNumber = 1, int pageSize = 10) 
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             var result = await _InvoiceService.GetAllMyInvoicesAsync(userId, pageSize, pageNumber);
@@ -65,7 +47,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("{invoiceId:int}")]
         [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<InvoiceResponseDto>> GetById(int invoiceId)
+        public async Task<IActionResult> GetById(int invoiceId)
         {
             try
             {
@@ -80,7 +62,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("order/{orderId:int}")]
         [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<InvoiceResponseDto>> GetByOrderId(int orderId)
+        public async Task<IActionResult> GetByOrderId(int orderId)
         {
             try
             {
@@ -94,7 +76,7 @@ namespace RadiologyInformationSystem.Controllers
         }
         [HttpGet("patient/{patientId:int}")]
         [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<PagedResult<InvoiceResponseDto>>> GetByPatient(
+        public async Task<IActionResult> GetByPatient(
             int patientId,
             [FromQuery] int pageNumber = 1,
             [FromQuery] int pageSize = 10)
@@ -111,7 +93,7 @@ namespace RadiologyInformationSystem.Controllers
         }
         [HttpGet("search")]
         [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<PagedResult<InvoiceResponseDto>>> Search(InvoiceSearchDto filter) ////
+        public async Task<IActionResult> Search(InvoiceSearchDto filter) 
         {
             var result = await _InvoiceService.SearchAsync(filter);
             return Ok(result);
@@ -121,62 +103,29 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search-my")]
         [Authorize(Roles = "Patient")]
-        public async Task<ActionResult<PagedResult<InvoiceResponseDto>>> SearchMyInvoices(InvoiceSearchDto filter) ////
+        public async Task<IActionResult> SearchMyInvoices(InvoiceSearchDto filter) 
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             var result = await _InvoiceService.SearchMyInvoicesAsync(filter,userId);
             return Ok(result);
         }
 
-        [HttpPatch("{invoiceId:int}/status")]
-        [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<InvoiceResponseDto>> UpdateStatus(
-            int invoiceId,
-            InvoiceStatus status)
+
+        [HttpGet("sum-amount")]
+        [Authorize(Roles = "Admin,Receptionist")]
+        public async Task<IActionResult> SumAmountWithin(DateTime start,DateTime end) 
         {
             try
             {
-                var updated = await _InvoiceService.UpdateStatusAsync(invoiceId, status);
-                return Ok(updated);
+                decimal sum=await _InvoiceService.CountAmountWithin(start,end);
+                return Ok(sum);
+
             }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (InvalidOperationException ex)
+            catch (ArgumentException ex)
             {
                 return BadRequest(new { message = ex.Message });
             }
         }
-
-        [HttpPatch("{invoiceId:int}/cancel")]
-        [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<InvoiceResponseDto>> Cancel(int invoiceId)
-        {
-            try
-            {
-                var cancelled = await _InvoiceService.CancelAsync(invoiceId);
-                return Ok(cancelled);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-        }
-
-        [HttpGet("count-By-Status")]
-        [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<ActionResult<int>> CountByStatus([FromQuery] InvoiceStatus ?status=null)
-        {
-
-                int cnt = await _InvoiceService.CountAllInvoicesByStatus(status);
-                return Ok(cnt);
-        }
-
 
     }
 }

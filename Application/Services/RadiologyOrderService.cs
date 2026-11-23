@@ -67,8 +67,18 @@ namespace Application.Services
                 StudyInstanceUID = selectedUid.StudyInstanceUID
 
             };
+
+            var invoice = new Invoice
+            {
+                Amount = dto.Amount,
+                Order=order,
+                PatientId=dto.PatientId,
+                CreatedAt=DateTime.Today,
+                PaymentMethod=dto.PaymentMethod,
+            };
             await _unitOfWork.Repository<RadiologyOrder>().AddAsync(order);
             await _unitOfWork.Repository<RadiologyStudy>().AddAsync(study);
+            await _unitOfWork.Repository<Invoice>().AddAsync(invoice);
             await _unitOfWork.SaveChangesAsync();
 
         }
@@ -142,6 +152,21 @@ namespace Application.Services
             if (order.Status == OrderStatus.Completed || order.Status == OrderStatus.Cancelled)
                 throw new InvalidOperationException(
                     $"Order is already {order.Status} and cannot be changed.");
+
+
+
+            if (order.ScheduledAt <= DateTime.Now)
+                order.Invoice.Amount /= 2;
+            else
+            {
+
+                var remainingTime = order.ScheduledAt - DateTime.Now;
+
+                if (remainingTime > TimeSpan.FromHours(48))
+                    order.Invoice.Amount = 0;
+                else
+                    order.Invoice.Amount /= 2;
+            }
 
             order.Status = OrderStatus.Cancelled;
 

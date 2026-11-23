@@ -17,5 +17,12 @@ namespace Application.DTOs.RequestDto
 
         [Required]
         public DateTime ScheduledAt { get; set; }
+
+        [Required]
+        public decimal Amount { get; set; }
+
+        [Required]
+        public PaymentMethod PaymentMethod { get; set; }
+
     }
 }

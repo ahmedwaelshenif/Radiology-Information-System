@@ -45,6 +45,7 @@ namespace Application.Specifications
             AddInclude(o => o.Patient.User);
             AddInclude(o => o.OrderedByUser);
             AddInclude(o => o.Study);
+            AddInclude(o => o.Invoice);
             AddOrderBy(o => o.Id);
 
             ApplyPaging(filter.PageNumber, filter.PageSize);

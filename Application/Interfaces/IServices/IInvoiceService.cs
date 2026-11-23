@@ -9,8 +9,7 @@ namespace Application.Interfaces.IServices
 {
     public interface IInvoiceService
     {
-        Task CreateAsync(CreateInvoiceDto dto);
-
+        
         Task<InvoiceResponseDto> GetByIdAsync(int invoiceId);
 
         Task<InvoiceResponseDto> GetByOrderIdAsync(int orderId);
@@ -31,12 +30,11 @@ namespace Application.Interfaces.IServices
          int userId, int pageSize = 10, int pageNumber = 1);
 
 
-        Task<InvoiceResponseDto> UpdateStatusAsync(
-            int invoiceId, InvoiceStatus status);
+        Task<decimal> CountAmountWithin(DateTime start, DateTime end);
 
-        Task<InvoiceResponseDto> CancelAsync(int invoiceId);
+     
 
-        Task<int> CountAllInvoicesByStatus(InvoiceStatus? status = null);
+       
 
     }
 }

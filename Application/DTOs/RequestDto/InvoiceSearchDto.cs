@@ -15,16 +15,12 @@ namespace Application.DTOs.RequestDto
         public string? AccessionNumber { get; set; }
         public string? ServiceName { get; set; }
         public PaymentMethod? PaymentMethod { get; set; }
-        public InvoiceStatus? Status { get; set; }
 
         public decimal? MinAmount { get; set; }
         public decimal? MaxAmount { get; set; }
 
         public DateTime? CreatedFrom { get; set; }
         public DateTime? CreatedTo { get; set; }
-
-        public DateTime? PaidFrom { get; set; }
-        public DateTime? PaidTo { get; set; }
 
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;

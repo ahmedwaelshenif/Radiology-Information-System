@@ -16,9 +16,7 @@ namespace Application.DTOs.ResponseDto
         public string? ServiceName { get; set; } = string.Empty;
         public decimal? Amount { get; set; }
         public PaymentMethod? PaymentMethod { get; set; }
-        public InvoiceStatus? Status { get; set; }
 
         public DateTime? CreatedAt { get; set; }
-        public DateTime? PaidAt { get; set; }
     }
 }
