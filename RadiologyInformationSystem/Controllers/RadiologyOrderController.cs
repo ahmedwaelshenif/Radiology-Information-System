@@ -106,34 +106,15 @@ namespace RadiologyInformationSystem.Controllers
             return Ok(result);
         }
 
-        [HttpPatch("{orderId:int}/status")]
-        [Authorize(Roles = "Admin,Receptionist")]
-        public async Task<ActionResult<RadiologyOrderResponseDto>> UpdateStatus(int orderId, [FromQuery] OrderStatus status)
-        {
-            try
-            {
-                var updated = await _RadiologyOrderService.UpdateStatusAsync(orderId, status);
-                return Ok(updated);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-        }
-
 
         [HttpPatch("{orderId:int}/cancel")]
         [Authorize(Roles = "Admin,Receptionist")]
-        public async Task<ActionResult<RadiologyOrderResponseDto>> Cancel(int orderId)
+        public async Task<ActionResult> Cancel(int orderId)
         {
             try
             {
-                var cancelled = await _RadiologyOrderService.CancelAsync(orderId);
-                return Ok(cancelled);
+                await _RadiologyOrderService.CancelAsync(orderId);
+                return Ok();
             }
             catch (KeyNotFoundException ex)
             {

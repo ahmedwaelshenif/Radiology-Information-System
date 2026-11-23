@@ -28,9 +28,7 @@ namespace Application.Interfaces.IServices
 
         Task<PagedResult<RadiologyOrderResponseDto>> SearchMyOrdersAsync(
            int UserId,RadiologyOrderSearchDto filter);
-        Task<RadiologyOrderResponseDto> UpdateStatusAsync(
-            int orderId, OrderStatus status);
-
-        Task<RadiologyOrderResponseDto> CancelAsync(int orderId);
+     
+        Task CancelAsync(int orderId);
     }
 }

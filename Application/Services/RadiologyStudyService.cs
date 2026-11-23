@@ -74,9 +74,19 @@ namespace Application.Services
             if (study == null)
                 throw new KeyNotFoundException($"Radiology study {id} was not found.");
 
-            if(study.Status== StudyStatus.Completed || study.Status == StudyStatus.Cancelled)
+
+            if(study.Status== StudyStatus.Completed || study.Status == StudyStatus.Cancelled || status== StudyStatus.Pending)
                 throw new InvalidOperationException($"Cannot change radiology study status from {study.Status} to {status}.");
+
+            if (study.Status == StudyStatus.Pending && status == StudyStatus.Completed)
+                throw new InvalidOperationException($"Cannot change radiology study status from {study.Status} to {status}.");
+
             study.Status = status;
+            if(study.Status== StudyStatus.Pending && status== StudyStatus.AwaitingReport)
+            {
+                var order = await _unitOfWork.Repository<RadiologyOrder>().GetByIdAsync(study.OrderId);
+                order.Status = OrderStatus.Completed;
+            }
             await _unitOfWork.SaveChangesAsync();
         
         }

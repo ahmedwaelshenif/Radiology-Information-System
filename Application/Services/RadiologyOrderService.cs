@@ -130,24 +130,27 @@ namespace Application.Services
 
 
 
-        public async Task<RadiologyOrderResponseDto> UpdateStatusAsync(
-            int orderId, OrderStatus status)
+        public async Task CancelAsync(
+            int orderId)
         {
-            var order = await GetTrackedOrderAsync(orderId);
+            var order = await _unitOfWork.Repository<RadiologyOrder>().GetEntityWithSpecAsync(new RadiologyOrderSearchSpecification(
+                new RadiologyOrderSearchDto { OrderId = orderId }));
+            if (order == null)
+                throw new KeyNotFoundException("Order doesn't Exist");
 
-            // Completed and Cancelled are final states
+            
             if (order.Status == OrderStatus.Completed || order.Status == OrderStatus.Cancelled)
                 throw new InvalidOperationException(
                     $"Order is already {order.Status} and cannot be changed.");
 
-            order.Status = status;
+            order.Status = OrderStatus.Cancelled;
+
+            order.Study.Status = StudyStatus.Cancelled;
 
             await SaveAsync(order);
-            return await GetByIdAsync(orderId);
+          
         }
 
-        public Task<RadiologyOrderResponseDto> CancelAsync(int orderId)
-            => UpdateStatusAsync(orderId, OrderStatus.Cancelled);
 
 
 
