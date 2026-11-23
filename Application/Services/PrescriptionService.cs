@@ -19,6 +19,7 @@ namespace Application.Services
         {
             _unitOfWork = unitOfWork;
         }
+        
 
         public async Task<bool> CreateAsync(PrescriptionRequestDto prescriptionDto, int createdById)
         {
@@ -65,13 +66,15 @@ namespace Application.Services
             };
         }
 
-        public async Task<bool> CancelPrescriptionAsync (int id)
+        public async Task CancelPrescriptionAsync (int id)
         {
             var prescription=await _unitOfWork.Repository<Prescription>().GetByIdAsync(id);
-            if (prescription == null) return false;
+            if (prescription == null)
+            { 
+               throw new KeyNotFoundException($"Prescription with {id} id can not be found");
+            }
             prescription.Status = PrescriptionStatus.Cancelled;
             await _unitOfWork.SaveChangesAsync();
-            return true;
         }
 
 

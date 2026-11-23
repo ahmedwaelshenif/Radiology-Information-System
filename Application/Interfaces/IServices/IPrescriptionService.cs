@@ -15,7 +15,7 @@ namespace Application.Interfaces.IServices
         Task<PagedResponse<PrescriptionResponseDto>> SearchAsync(PrescriptionSearchDto searchDto);
         Task<PagedResponse<PrescriptionResponseDto>> SearchMyPrescriptionsAsync(PrescriptionSearchDto searchDto,int userId);
         Task<PagedResponse<PrescriptionResponseDto>> GetAllMyPrescriptionsAsync(int pageNumber,int pageSize,int userId);
-        Task<bool> CancelPrescriptionAsync(int id);
+        Task CancelPrescriptionAsync(int id);
         Task<PrescriptionUpdateResult> UpdateAsync(int id, PrescriptionRequestDto prescriptionDto, int createdById);
 
 
