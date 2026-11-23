@@ -77,13 +77,13 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("My-Pdf")]
         [Authorize(Roles = "Patient")]
-        public async Task<ActionResult<PagedResult<RadiologyReportResponseDto>>> GetMyPdf(int reportId) ///////
+        public async Task<IActionResult> GetMyPdf(int reportId) ///////
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             try
             {
-                var result = _RadiologyReportService.GetMyPdfAsync(reportId, userId);
-                return Ok(result);
+                var result = await _RadiologyReportService.GetMyPdfAsync(reportId, userId);
+                return File(result, "application/pdf", $"radiology-report-{reportId}.pdf");
             }
             catch(KeyNotFoundException ex)
             {

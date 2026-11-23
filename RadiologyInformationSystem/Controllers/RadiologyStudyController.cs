@@ -21,8 +21,8 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPatch("status/{id:int}")]
-        [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<IActionResult> UpdateStatus(int id, [FromBody] StudyStatus status)
+        [Authorize(Roles = "Radiologist")]
+        public async Task<IActionResult> UpdateStatus(int id, [FromQuery] StudyStatus status)
         {
             if (!Enum.IsDefined(typeof(StudyStatus), status))
                 return BadRequest("Invalid study status.");
@@ -43,7 +43,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search")]
         [Authorize(Roles = "Admin,Receptionist,Radiologist")]
-        public async Task<IActionResult> Search([FromBody]  RadiologyStudySearchDto searchDto)
+        public async Task<IActionResult> Search([FromQuery]  RadiologyStudySearchDto searchDto)
         {
             var res = await _radiologyStudyService.SearchAsync(searchDto);
             return Ok(res);
@@ -77,7 +77,7 @@ namespace RadiologyInformationSystem.Controllers
         [HttpGet("my-studies/search")]
         [Authorize(Roles = "Patient")]
         public async Task<IActionResult> SearchMyStudies(
-            [FromBody] RadiologyStudySearchDto searchDto)
+            [FromQuery] RadiologyStudySearchDto searchDto)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 

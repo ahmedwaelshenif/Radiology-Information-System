@@ -119,7 +119,7 @@ namespace RadiologyInformationSystem.Controllers
 
 
 
-        [HttpGet("search")]
+        [HttpGet("search-my")]
         [Authorize(Roles = "Patient")]
         public async Task<ActionResult<PagedResult<InvoiceResponseDto>>> SearchMyInvoices(InvoiceSearchDto filter) ////
         {

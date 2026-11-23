@@ -100,14 +100,14 @@ namespace RadiologyInformationSystem.Controllers
         }
         [HttpGet("search")]
         [Authorize(Roles = "Admin,Receptionist,Radiologist")]
-        public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> Search([FromBody] RadiologyOrderSearchDto filter)
+        public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> Search([FromQuery] RadiologyOrderSearchDto filter)
         {
             var result = await _RadiologyOrderService.SearchAsync(filter);
             return Ok(result);
         }
 
         [HttpPatch("{orderId:int}/status")]
-        [Authorize(Roles = "Admin,Radiologist")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<ActionResult<RadiologyOrderResponseDto>> UpdateStatus(int orderId, [FromQuery] OrderStatus status)
         {
             try
@@ -162,7 +162,7 @@ namespace RadiologyInformationSystem.Controllers
         [HttpGet("my-orders/search")]
         [Authorize(Roles = "Patient")]
         public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> SearchMyOrders(
-               [FromBody] RadiologyOrderSearchDto filter)
+               [FromQuery] RadiologyOrderSearchDto filter)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 

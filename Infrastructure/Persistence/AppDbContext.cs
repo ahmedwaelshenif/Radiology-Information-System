@@ -48,7 +48,7 @@ namespace Infrastructure.Persistence
                     .IsRequired();
             });
 
-            // Patient - User (One-to-One)
+            // Patient - User (one-to-one)
             modelBuilder.Entity<Patient>(entity =>
             {
                 entity.HasOne(p => p.User)
@@ -56,6 +56,29 @@ namespace Infrastructure.Persistence
                     .HasForeignKey<Patient>(p => p.UserId)
                     .IsRequired()
                     .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasMany(p => p.MedicalRecords)
+                    .WithOne(m => m.Patient)
+                    .HasForeignKey(m => m.PatientId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasMany(p => p.TreatmentPlans)
+                    .WithOne(t => t.Patient)
+                    .HasForeignKey(t => t.PatientId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasMany(p => p.RadiologyOrders)
+                    .WithOne(o => o.Patient)
+                    .HasForeignKey(o => o.PatientId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasMany(p => p.Invoices)
+                    .WithOne(i => i.Patient)
+                    .HasForeignKey(i => i.PatientId);
+
+                entity.HasMany(p => p.Prescriptions)
+                    .WithOne()
+                    .HasForeignKey(prescription => prescription.PatientId);
             });
 
             // Radiologist - User (One-to-One)
@@ -85,12 +108,61 @@ namespace Infrastructure.Persistence
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            // order - invoice (one to one)
-            modelBuilder.Entity<Invoice>().HasIndex(i => i.OrderId).IsUnique();
+            // User relationships with multiple dependent entity types
+            modelBuilder.Entity<MedicalRecord>()
+                .HasOne(m => m.RecordedByUser)
+                .WithMany()
+                .HasForeignKey(m => m.RecordedByUserId);
 
-            // report - study (one to one)
+            modelBuilder.Entity<Prescription>()
+                .HasOne(p => p.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(p => p.CreatedByUserId);
 
-            modelBuilder.Entity<RadiologyReport>().HasIndex(r => r.StudyId).IsUnique();
+            modelBuilder.Entity<TreatmentPlan>()
+                .HasOne(t => t.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(t => t.CreatedByUserId);
+
+            modelBuilder.Entity<RadiologyOrder>()
+                .HasOne(o => o.OrderedByUser)
+                .WithMany()
+                .HasForeignKey(o => o.OrderedByUserId);
+
+            modelBuilder.Entity<RadiologyOrder>()
+                .HasOne(o => o.Study)
+                .WithOne(s => s.Order)
+                .HasForeignKey<RadiologyStudy>(s => s.OrderId)
+                .IsRequired();
+
+            // Order - invoice (one-to-one)
+            modelBuilder.Entity<RadiologyOrder>()
+                .HasOne(o => o.Invoice)
+                .WithOne(i => i.Order)
+                .HasForeignKey<Invoice>(i => i.OrderId)
+                .IsRequired();
+
+            // Study - report (one-to-one)
+            modelBuilder.Entity<RadiologyStudy>()
+                .HasOne(s => s.Report)
+                .WithOne(r => r.Study)
+                .HasForeignKey<RadiologyReport>(r => r.StudyId)
+                .IsRequired();
+
+            modelBuilder.Entity<RadiologyReport>()
+                .HasOne(r => r.CreatedByUser)
+                .WithMany()
+                .HasForeignKey(r => r.CreatedByUserId);
+
+            modelBuilder.Entity<RadiologyStudy>()
+                .HasMany(s => s.CDSSResults)
+                .WithOne(c => c.Study)
+                .HasForeignKey(c => c.StudyId);
+
+            modelBuilder.Entity<RadiologyOrder>()
+                .HasMany(o => o.HL7Messages)
+                .WithOne(h => h.Order)
+                .HasForeignKey(h => h.OrderId);
 
             // Gender configuration
             modelBuilder.Entity<Patient>()
@@ -100,10 +172,10 @@ namespace Infrastructure.Persistence
 
 
             modelBuilder.Entity<TreatmentPlan>()
-            .HasMany(tp => tp.Prescriptions)
-            .WithOne(p => p.TreatmentPlan)
-            .HasForeignKey(p => p.TreatmentPlanId)
-            .OnDelete(DeleteBehavior.Cascade);
-                }
+                .HasMany(t => t.Prescriptions)
+                .WithOne(p => p.TreatmentPlan)
+                .HasForeignKey(p => p.TreatmentPlanId)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

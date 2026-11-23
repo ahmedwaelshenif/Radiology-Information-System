@@ -14,6 +14,10 @@ namespace Domain.Entities
         public User CreatedByUser { get; set; }
 
         [Required]
+        public int PatientId { get; set; }
+        public Patient Patient { get; set; }
+
+        [Required]
         public string Details { get; set; } = string.Empty;
 
         [Required]
