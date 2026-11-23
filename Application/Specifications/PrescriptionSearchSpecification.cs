@@ -15,6 +15,9 @@ public class PrescriptionSearchSpecification
             (!searchDto.TreatmentPlanId.HasValue ||
                 p.TreatmentPlanId == searchDto.TreatmentPlanId.Value) &&
 
+             (!searchDto.UserId.HasValue ||
+                p.TreatmentPlan.Patient.UserId == searchDto.UserId.Value) &&
+
              (string.IsNullOrWhiteSpace(searchDto.PlanTitle) ||
                     p.TreatmentPlan.PlanTitle.Contains(searchDto.PlanTitle)) &&
 
@@ -30,6 +33,7 @@ public class PrescriptionSearchSpecification
     {
         AddInclude(p => p.CreatedByUser);
         AddInclude(p => p.TreatmentPlan);
+        AddInclude(p => p.TreatmentPlan.Patient);
         AddOrderByDescending(p => p.Date);
         ApplyPaging(searchDto.PageNumber, searchDto.PageSize);
     }

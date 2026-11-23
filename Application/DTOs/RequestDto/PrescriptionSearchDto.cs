@@ -11,6 +11,7 @@ namespace Application.DTOs.RequestDto
 
         public int? TreatmentPlanId { get; set; }
         public int? PatientId { get; set; }
+        public int? UserId { get; set; }
 
         public string? PlanTitle { get; set; }
 

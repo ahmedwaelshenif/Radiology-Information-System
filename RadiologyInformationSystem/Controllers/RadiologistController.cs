@@ -47,7 +47,7 @@ namespace RadiologyInformationSystem.Controllers
             return Ok(response);
         }
 
-        [HttpPost("search")]
+        [HttpGet("search")]
         [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<PagedResponse<RadiologistResponseDto>>> Search(RadiologistSearchDto searchDto)
         {
