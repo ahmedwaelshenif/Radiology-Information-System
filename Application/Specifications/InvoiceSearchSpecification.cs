@@ -10,6 +10,9 @@ namespace Application.Specifications
             : base(i =>
                 (!filter.InvoiceId.HasValue || i.Id == filter.InvoiceId.Value) &&
 
+                (!filter.UserId.HasValue || i.Patient.UserId == filter.UserId.Value) &&
+
+
                 (!filter.PatientId.HasValue || i.PatientId == filter.PatientId.Value) &&
 
                 (!filter.OrderId.HasValue || i.OrderId == filter.OrderId.Value) &&

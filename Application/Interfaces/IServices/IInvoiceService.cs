@@ -22,6 +22,13 @@ namespace Application.Interfaces.IServices
         Task<PagedResult<InvoiceResponseDto>> SearchAsync(
             InvoiceSearchDto filter);
 
+        Task<PagedResult<InvoiceResponseDto>> SearchMyInvoicesAsync(
+           InvoiceSearchDto filter, int userId);
+
+        Task<PagedResult<InvoiceResponseDto>> GetAllMyInvoicesAsync(
+         int userId, int pageSize = 10, int pageNumber = 1);
+
+
         Task<InvoiceResponseDto> UpdateStatusAsync(
             int invoiceId, InvoiceStatus status);
 

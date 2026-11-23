@@ -40,14 +40,16 @@ namespace Application.Services
             return ToDto(prescription);
         }
 
-        public async Task<PagedResponse<PrescriptionResponseDto>> GetByPatientIdAsync(int id)
+        public async Task<PagedResponse<PrescriptionResponseDto>> SearchMyPrescriptionsAsync(PrescriptionSearchDto searchDto, int userId)
         {
-            return await SearchAsync(new PrescriptionSearchDto { PatientId= id });
+            searchDto.UserId = userId;
+            searchDto.PatientId = null;
+            return await SearchAsync(searchDto);
         }
 
-        public async Task<PagedResponse<PrescriptionResponseDto>> GetByTreatmentPlanIdAsync(int id)
+        public async Task<PagedResponse<PrescriptionResponseDto>> GetAllMyPrescriptionsAsync(int pageNumber, int pageSize, int userId)
         {
-            return await SearchAsync(new PrescriptionSearchDto { TreatmentPlanId = id });
+            return await SearchAsync(new PrescriptionSearchDto { UserId=userId,PageNumber=pageNumber,PageSize=pageSize});
         }
 
         public async Task<PagedResponse<PrescriptionResponseDto>> SearchAsync(PrescriptionSearchDto searchDto)
@@ -137,5 +139,7 @@ namespace Application.Services
 
             return true;
         }
+
+     
     }
 }

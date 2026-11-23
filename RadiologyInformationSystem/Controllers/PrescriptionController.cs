@@ -2,8 +2,10 @@
 using Application.Enums;
 using Application.Interfaces.IServices;
 using Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace RadiologyInformationSystem.Controllers
 {
@@ -19,16 +21,19 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Radiologist")]
         public async Task<IActionResult> Create(PrescriptionRequestDto dto)
         {
-            var res = await _prescriptionService.CreateAsync(dto, 1); //update later after using authentication
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var res = await _prescriptionService.CreateAsync(dto, userId); //update later after using authentication
             if (res)
                 return Ok();
 
-            return Conflict("No Treatment Plan Exist");
+            return NotFound("Treatment Plan Not found");
         }
 
         [HttpGet("{id:int}")]
+        [Authorize(Roles = "Radiologist")]
         public async Task<IActionResult> GetById(int id)
         {
             var res=await _prescriptionService.GetByIdAsync(id);
@@ -37,25 +42,9 @@ namespace RadiologyInformationSystem.Controllers
             return Ok(res);
         }
 
-        [HttpGet("patient/{id:int}")]
-        public async Task<IActionResult> GetByPatientId(int id)
-        {
-            var res = await _prescriptionService.GetByPatientIdAsync(id);
-            if (res == null)
-                return NotFound("Prescription not found.");
-            return Ok(res);
-        }
-
-        [HttpGet("treatmentPlan/{id:int}")]
-        public async Task<IActionResult> GetByTreatmentPlanId(int id)
-        {
-            var res = await _prescriptionService.GetByTreatmentPlanIdAsync(id);
-            if (res == null)
-                return NotFound("Prescription not found.");
-            return Ok(res);
-        }
-
+      
         [HttpPatch("cancel/{id:int}")]
+        [Authorize(Roles = "Radiologist")]
         public async Task<IActionResult> CancelPrescription(int id)
         {
             var res = await _prescriptionService.CancelPrescriptionAsync(id);
@@ -65,18 +54,38 @@ namespace RadiologyInformationSystem.Controllers
 
         }
 
-        [HttpPost("search")]
-        public async Task<IActionResult> Search(PrescriptionSearchDto searchDto)
+        [HttpGet("search")]
+        [Authorize(Roles = "Radiologist")]
+        public async Task<IActionResult> Search(PrescriptionSearchDto searchDto)//////
         {
             var res = await _prescriptionService.SearchAsync(searchDto);
             return Ok(res);
         }
 
-        [HttpPatch("{id:int}")]
+        [HttpGet("search-my-prescriptions")]
+        [Authorize(Roles = "Patient")]
+        public async Task<IActionResult> SearchMyPrescriptions(PrescriptionSearchDto searchDto)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var res = await _prescriptionService.SearchMyPrescriptionsAsync(searchDto,userId);
+            return Ok(res);
+        }
 
+        [HttpGet("get-my-prescriptions")]
+        [Authorize(Roles = "Patient")]
+        public async Task<IActionResult> GetAllMyPrescriptions(int pageNumber,int pageSize)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var res = await _prescriptionService.GetAllMyPrescriptionsAsync(pageNumber,pageSize, userId);
+            return Ok(res);
+        }
+
+        [HttpPatch("{id:int}")]
+        [Authorize(Roles = "Radiologist")]
         public async Task<IActionResult> Update(int id, [FromBody] PrescriptionRequestDto prescriptionDto)
         {
-            PrescriptionUpdateResult res = await _prescriptionService.UpdateAsync(id,prescriptionDto,1); //update later after using authentication
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            PrescriptionUpdateResult res = await _prescriptionService.UpdateAsync(id,prescriptionDto,userId); //update later after using authentication
             if(res== PrescriptionUpdateResult.Success)
                 return Ok(res);
             if (res == PrescriptionUpdateResult.PrescriptionNotFound)

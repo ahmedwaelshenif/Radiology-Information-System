@@ -133,6 +133,30 @@ namespace Application.Services
         public Task<InvoiceResponseDto> CancelAsync(int invoiceId)
             => UpdateStatusAsync(invoiceId, InvoiceStatus.Cancelled);
 
+
+
+        public async Task<PagedResult<InvoiceResponseDto>> SearchMyInvoicesAsync(InvoiceSearchDto filter, int userId)
+        {
+            filter.PatientName = null;
+            filter.PatientId = null;
+            filter.UserId = userId;
+            return await SearchAsync(filter);
+        }
+
+        public async Task<PagedResult<InvoiceResponseDto>> GetAllMyInvoicesAsync(int userId,int pageSize=10,int pageNumber=1)
+        {
+           
+            return await SearchAsync(new InvoiceSearchDto
+            {
+                UserId = userId,
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            });
+        }
+
+
+
+        //Helper Method
         private async Task<Invoice> GetTrackedInvoiceAsync(int invoiceId)
         {
             return await _unitOfWork.Repository<Invoice>().GetByIdAsync(invoiceId)
@@ -160,6 +184,8 @@ namespace Application.Services
             };
         }
 
+       
+
         private static InvoiceResponseDto ToDto(Invoice i) => new()
         {
             InvoiceId = i.Id,
@@ -174,5 +200,7 @@ namespace Application.Services
             CreatedAt = i.CreatedAt,
             PaidAt = i.PaidAt
         };
+
+
     }
 }

@@ -98,7 +98,7 @@ namespace RadiologyInformationSystem.Controllers
             var result = await _RadiologyOrderService.GetByPatientAsync(patientId, pageNumber, pageSize);
             return Ok(result);
         }
-        [HttpPost("search")]
+        [HttpGet("search")]
         [Authorize(Roles = "Admin,Receptionist,Radiologist")]
         public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> Search([FromBody] RadiologyOrderSearchDto filter)
         {
@@ -159,7 +159,7 @@ namespace RadiologyInformationSystem.Controllers
             return Ok(result);
         }
 
-        [HttpPost("my-orders/search")]
+        [HttpGet("my-orders/search")]
         [Authorize(Roles = "Patient")]
         public async Task<ActionResult<PagedResult<RadiologyOrderResponseDto>>> SearchMyOrders(
                [FromBody] RadiologyOrderSearchDto filter)
