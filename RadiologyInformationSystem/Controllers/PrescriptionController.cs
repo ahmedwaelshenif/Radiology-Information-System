@@ -47,11 +47,15 @@ namespace RadiologyInformationSystem.Controllers
         [Authorize(Roles = "Radiologist")]
         public async Task<IActionResult> CancelPrescription(int id)
         {
-            var res = await _prescriptionService.CancelPrescriptionAsync(id);
-            if(res)
-                return Ok(res);
-            return NotFound("Prescription not found.");
-
+            try
+            {
+                await _prescriptionService.CancelPrescriptionAsync(id);
+                return Ok();
+            }
+            catch(KeyNotFoundException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
 
         [HttpGet("search")]
