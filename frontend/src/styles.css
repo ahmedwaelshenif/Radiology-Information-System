@@ -310,6 +310,25 @@
 .theme-dark .radiologist-treatment-plans-table .row-action.complete{background:#19251f;border-color:#355341;color:#9bd0ad}
 .theme-dark .radiologist-treatment-plans-table .row-action.cancel,.theme-dark .radiologist-prescriptions-table .row-action.cancel,.theme-dark .radiologist-reports-table .row-action.delete{background:#291b20;border-color:#57343d;color:#e4a0aa}
 .theme-dark .radiologist-prescriptions-table .row-action.replace{background:#21192b;border-color:#49345f;color:#cba8f5}
+.shell.theme-dark .role-dashboard .dashboard-hero{background:linear-gradient(115deg,#111116 0%,#17131d 62%,#20172b 100%)!important;border-color:#34283f!important}
+.shell.theme-dark .role-dashboard .dashboard-hero:after{border-color:#a855f71c!important;box-shadow:0 0 0 30px #a855f70c,0 0 0 60px #a855f708!important}
+.shell.theme-dark .role-dashboard .dashboard-hero-copy h1{color:#fff!important}
+.shell.theme-dark .role-dashboard .dashboard-hero-copy p{color:#d0cad7!important}
+.shell.theme-dark .role-dashboard .dashboard-hero-copy .eyebrow{color:#c084fc!important}
+.shell.theme-dark .role-dashboard .dashboard-hero-mark{background:#291d38!important;color:#c084fc!important}
+.shell.theme-dark .dashboard-metric .metric-label,.shell.theme-dark .dashboard-metric strong,.shell.theme-dark .dashboard-metric small,.shell.theme-dark .dashboard-metric .metric-arrow{color:#fff!important}
+.shell.theme-dark .order-count-section{background:#111116!important;border-color:#282731!important}
+.shell.theme-dark .order-count-heading h2,.shell.theme-dark .order-count-label,.shell.theme-dark .order-count-card strong{color:#fff!important}
+.shell.theme-dark .order-count-heading p,.shell.theme-dark .order-count-card small{color:#c3bdca!important}
+.shell.theme-dark .order-count-card{background:#15151b!important;border-color:#35313b!important}
+.shell.theme-dark .order-count-scheduled .order-count-icon{background:#302718!important;color:#f2bd62!important}
+.shell.theme-dark .order-count-completed .order-count-icon{background:#1b3027!important;color:#83d5a5!important}
+.shell.theme-dark .order-count-cancelled .order-count-icon{background:#352023!important;color:#ed9292!important}
+.shell.theme-dark .radiologist-patient-table .row-action,.shell.theme-dark .radiologist-orders-table .row-action,.shell.theme-dark .radiologist-studies-table .row-action,.shell.theme-dark .radiologist-treatment-plans-table .row-action,.shell.theme-dark .radiologist-prescriptions-table .row-action,.shell.theme-dark .radiologist-reports-table .row-action{background:#19171f!important;border-color:#393341!important;color:#e2dce9!important}
+.shell.theme-dark .radiologist-patient-table .row-action:hover,.shell.theme-dark .radiologist-orders-table .row-action:hover,.shell.theme-dark .radiologist-studies-table .row-action:hover,.shell.theme-dark .radiologist-treatment-plans-table .row-action:hover,.shell.theme-dark .radiologist-prescriptions-table .row-action:hover,.shell.theme-dark .radiologist-reports-table .row-action:hover{background:#292032!important;border-color:#67458b!important;color:#f0e4ff!important}
+.shell.theme-dark .radiologist-patient-table .row-action.plans,.shell.theme-dark .radiologist-patient-table .row-action.records,.shell.theme-dark .radiologist-patient-table .row-action.studies,.shell.theme-dark .radiologist-patient-table .row-action.orders,.shell.theme-dark .radiologist-orders-table .row-action.study,.shell.theme-dark .radiologist-studies-table .row-action.study,.shell.theme-dark .radiologist-studies-table .row-action.update,.shell.theme-dark .radiologist-treatment-plans-table .row-action.add.rx,.shell.theme-dark .radiologist-treatment-plans-table .row-action.prescriptions,.shell.theme-dark .radiologist-prescriptions-table .row-action.plan,.shell.theme-dark .radiologist-prescriptions-table .row-action.replace,.shell.theme-dark .radiologist-reports-table .row-action.download,.shell.theme-dark .radiologist-reports-table .row-action.edit{background:#21192b!important;border-color:#49345f!important;color:#d8b7fa!important}
+.shell.theme-dark .radiologist-treatment-plans-table .row-action.complete{background:#19251f!important;border-color:#355341!important;color:#a9ddb9!important}
+.shell.theme-dark .radiologist-treatment-plans-table .row-action.cancel,.shell.theme-dark .radiologist-prescriptions-table .row-action.cancel,.shell.theme-dark .radiologist-reports-table .row-action.delete{background:#291b20!important;border-color:#57343d!important;color:#efabb4!important}
 @media(max-width:820px){.shell.sidebar-collapsed .profile-row{display:none}.shell.sidebar-collapsed .logout-btn{width:100%;min-width:0;min-height:38px;align-self:stretch;justify-content:flex-start;padding:0 11px}.shell.sidebar-collapsed .logout-btn span{display:inline}}
 @media(max-width:500px){.logout-confirm-dialog{padding:23px 18px}.logout-confirm-actions{flex-direction:column-reverse}.logout-confirm-actions button{width:100%}}
 .records-page .data-table td .status-value{display:inline-flex;align-items:center;gap:6px;font-weight:650;letter-spacing:.01em}
