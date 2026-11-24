@@ -11,6 +11,8 @@ namespace Application.DTOs.ResponseDto
         public string? FullName { get; set; }
         public int? Id { get; set; }
 
+        public bool ? IsActive { get; set; }
+
         public DateOnly? DateOfBirth { get; set; }
     
         public Gender? Gender { get; set; }

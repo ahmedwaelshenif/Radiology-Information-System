@@ -60,7 +60,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search")]
         [Authorize(Roles = "Radiologist")]
-        public async Task<IActionResult> Search(PrescriptionSearchDto searchDto)//////
+        public async Task<IActionResult> Search([FromQuery] PrescriptionSearchDto searchDto)//////
         {
             var res = await _prescriptionService.SearchAsync(searchDto);
             return Ok(res);
@@ -68,7 +68,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search-my-prescriptions")]
         [Authorize(Roles = "Patient")]
-        public async Task<IActionResult> SearchMyPrescriptions(PrescriptionSearchDto searchDto)
+        public async Task<IActionResult> SearchMyPrescriptions([FromQuery] PrescriptionSearchDto searchDto)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             var res = await _prescriptionService.SearchMyPrescriptionsAsync(searchDto,userId);

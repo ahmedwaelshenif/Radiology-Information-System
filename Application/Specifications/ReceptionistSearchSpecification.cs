@@ -11,6 +11,7 @@ namespace Application.Specifications.ReceptionistSpecifications
         {
             AddCriteria(r =>
                 (!filter.Id.HasValue || r.Id == filter.Id.Value) &&
+                (!filter.IsActive.HasValue || r.User.IsActive == filter.IsActive.Value) &&
 
                 (!filter.UserId.HasValue || r.UserId == filter.UserId.Value) &&
 

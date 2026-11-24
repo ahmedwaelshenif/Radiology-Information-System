@@ -20,6 +20,8 @@ namespace Application.DTOs.RequestDto
 
         public Gender? Gender { get; set; }
 
+        public bool? IsActive { get; set; }
+
         public string? PhoneNumber { get; set; }
 
         [Range(1, int.MaxValue)]

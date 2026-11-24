@@ -43,7 +43,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet ("search")]
         [Authorize(Roles = "Admin,Receptionist,Radiologist")]
-        public async Task<IActionResult> Search(PatientSearchDto searchDto)
+        public async Task<IActionResult> Search([FromQuery] PatientSearchDto searchDto)
         {
             var res=await _patientService.SearchAsync(searchDto);
             return Ok(res);

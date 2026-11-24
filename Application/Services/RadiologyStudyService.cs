@@ -81,12 +81,15 @@ namespace Application.Services
             if (study.Status == StudyStatus.Pending && status == StudyStatus.Completed)
                 throw new InvalidOperationException($"Cannot change radiology study status from {study.Status} to {status}.");
 
-            study.Status = status;
+            
             if(study.Status== StudyStatus.Pending && status== StudyStatus.AwaitingReport)
             {
                 var order = await _unitOfWork.Repository<RadiologyOrder>().GetByIdAsync(study.OrderId);
                 order.Status = OrderStatus.Completed;
             }
+            study.Status = status;
+            if (status == StudyStatus.Completed)
+                study.StudyDate = DateOnly.FromDateTime(DateTime.Today);
             await _unitOfWork.SaveChangesAsync();
         
         }

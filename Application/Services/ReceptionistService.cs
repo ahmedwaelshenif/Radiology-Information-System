@@ -89,7 +89,9 @@ namespace Application.Services
                 FullName = receptionist.User.FullName,
                 Id = receptionist.Id,
                 UserId = receptionist.User.Id,
-                PhoneNumber = receptionist.PhoneNumber
+                PhoneNumber = receptionist.PhoneNumber,
+                IsActive=receptionist.User.IsActive
+               
             };
         }
     }

@@ -126,7 +126,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search")]
         [Authorize(Roles = "Radiologist")]
-        public async Task<ActionResult<PagedResult<RadiologyReportResponseDto>>> Search(RadiologyReportSearchDto filter) ///////
+        public async Task<ActionResult<PagedResult<RadiologyReportResponseDto>>> Search([FromQuery] RadiologyReportSearchDto filter) ///////
         {
             var result = await _RadiologyReportService.SearchAsync(filter);
             return Ok(result);

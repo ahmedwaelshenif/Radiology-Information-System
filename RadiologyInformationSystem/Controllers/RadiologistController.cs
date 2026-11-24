@@ -49,7 +49,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search")]
         [Authorize(Roles = "Admin,Receptionist,Radiologist")]
-        public async Task<ActionResult<PagedResponse<RadiologistResponseDto>>> Search(RadiologistSearchDto searchDto)
+        public async Task<ActionResult<PagedResponse<RadiologistResponseDto>>> Search([FromQuery] RadiologistSearchDto searchDto)
         {
             var response = await _RadiologistService.SearchAsync(searchDto);
             return Ok(response);

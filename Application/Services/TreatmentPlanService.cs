@@ -104,6 +104,7 @@ namespace Application.Services
                 PageSize = searchDto.PageSize,
                 TotalCount = result.TotalCount,
 
+
             };
         }
  
@@ -131,7 +132,8 @@ namespace Application.Services
                 PatientId = treatmentPlan.PatientId,
                 PlanDetails = treatmentPlan.PlanDetails,
                 PlanTitle = treatmentPlan.PlanTitle,
-                PatientName = treatmentPlan.Patient.User.FullName
+                PatientName = treatmentPlan.Patient.User.FullName,
+                Status = treatmentPlan.Status,
             };
         }
 

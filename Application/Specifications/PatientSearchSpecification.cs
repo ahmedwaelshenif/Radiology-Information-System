@@ -25,6 +25,9 @@ namespace Application.Specifications.PatientSpecifications
                 (!filter.Gender.HasValue ||
                     p.Gender == filter.Gender.Value) &&
 
+                 (!filter.IsActive.HasValue ||
+                    p.User.IsActive == filter.IsActive.Value) &&
+
                 (string.IsNullOrEmpty(filter.PhoneNumber) ||
                     (p.PhoneNumber != null &&
                      p.PhoneNumber.Contains(filter.PhoneNumber)))

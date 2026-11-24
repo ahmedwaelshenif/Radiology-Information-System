@@ -15,6 +15,7 @@ namespace Application.Specifications
                 (!filter.Id.HasValue || r.Id == filter.Id.Value) &&
 
                 (!filter.UserId.HasValue || r.UserId == filter.UserId.Value) &&
+                (!filter.IsActive.HasValue || r.User.IsActive == filter.IsActive.Value) &&
 
                 (string.IsNullOrWhiteSpace(filter.FullName) ||
                     r.User.FullName.Contains(filter.FullName)) &&

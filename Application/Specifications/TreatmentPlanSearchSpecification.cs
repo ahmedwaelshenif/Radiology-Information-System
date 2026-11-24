@@ -18,6 +18,9 @@ namespace Application.Specifications
                 && (!searchDto.Id.HasValue ||
                     tp.Id == searchDto.Id.Value)
 
+                 && (!searchDto.Status.HasValue ||
+                    tp.Status == searchDto.Status.Value)
+
                 && (string.IsNullOrEmpty(searchDto.PlanTitle) ||
                     tp.PlanTitle.Contains(searchDto.PlanTitle))
 

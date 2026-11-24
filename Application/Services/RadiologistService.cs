@@ -80,7 +80,9 @@ namespace Application.Services
                 Items = radiologists.Select(ToDto).ToList(),
                 PageNumber = searchDto.PageNumber,
                 PageSize = searchDto.PageSize,
-                TotalCount = totalCount
+                TotalCount = totalCount,
+
+                
             };
         }
 
@@ -95,7 +97,9 @@ namespace Application.Services
                 FullName = radiologist.User.FullName,
                 Id = radiologist.Id,
                 UserId = radiologist.User.Id,
-                LicenseNumber = radiologist.LicenseNumber
+                LicenseNumber = radiologist.LicenseNumber,
+                IsActive=radiologist.User.IsActive
+               
             };
         }
     }

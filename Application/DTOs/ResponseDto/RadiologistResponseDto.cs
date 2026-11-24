@@ -10,6 +10,7 @@ namespace Application.DTOs.ResponseDto
         public string? Email { get; set; }
         public string? FullName { get; set; }
         public int? Id { get; set; }
+        public bool? IsActive { get; set; }
         public int? UserId { get; set; }
         public string? LicenseNumber { get; set; }
 

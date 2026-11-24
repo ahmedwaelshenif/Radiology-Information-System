@@ -92,6 +92,7 @@ namespace Application.Services
                 PhoneNumber=patient.PhoneNumber,
                 Id=patient.Id,
                 UserId=patient.UserId, 
+                IsActive=patient.User.IsActive
             };
         }
 

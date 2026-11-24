@@ -23,6 +23,9 @@ namespace Application.Services
             var user=await _unitOfWork.Repository<User>().GetByIdAsync(id);
             if (user == null)
                 throw new KeyNotFoundException("User Not Found");
+
+            if (user.Role == Role.Admin)
+                throw new InvalidOperationException("Cannot Activate an Admin");
             if(user.IsActive)
                 throw new InvalidOperationException("User is already active");
             user.IsActive = true;
@@ -34,6 +37,8 @@ namespace Application.Services
             var user = await _unitOfWork.Repository<User>().GetByIdAsync(id);
             if (user == null)
                 throw new KeyNotFoundException("User Not Found");
+            if (user.Role == Role.Admin)
+                throw new InvalidOperationException("Cannot Deactivate an Admin");
             if (!user.IsActive)
                 throw new InvalidOperationException("User is already inactive");
             user.IsActive = false;

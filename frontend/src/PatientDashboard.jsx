@@ -1,0 +1,29 @@
+import React,{useEffect,useState} from 'react';
+import {ArrowRight,BookOpen,CalendarDays,ChevronRight,ClipboardList,FileHeart,FileText,HeartPulse,Microscope,Wallet} from 'lucide-react';
+
+const panels=[
+ {group:'Orders',label:'Imaging orders',path:'/RadiologyOrder/my-orders?pageNumber=1&pageSize=1',icon:ClipboardList,tone:'blue'},
+ {group:'Studies',label:'Imaging studies',path:'/RadiologyStudy/my-studies?pageNumber=1&pageSize=1',icon:Microscope,tone:'cyan'},
+ {group:'Reports',label:'Available reports',path:'/RadiologyReport/My-Reports?pageNumber=1&pageSize=1',icon:FileText,tone:'green'},
+ {group:'Treatment plans',label:'Treatment plans',path:'/TreatmentPlan/my?PageNumber=1&PageSize=1',icon:HeartPulse,tone:'purple'},
+ {group:'Prescriptions',label:'Prescriptions',path:'/Prescription/get-my-prescriptions?pageNumber=1&pageSize=1',icon:BookOpen,tone:'amber'},
+ {group:'Invoices',label:'Invoices',path:'/Invoice/my-invoices?pageNumber=1&pageSize=1',icon:Wallet,tone:'slate'}
+];
+const items=result=>result?.items||result?.Items||(Array.isArray(result)?result:[]);
+const count=result=>result?.totalCount??result?.TotalCount??items(result).length;
+const statusName=value=>{if(value==null)return 'Status unavailable';const names=['Scheduled','Completed','Cancelled'];const numeric=Number(value);if(Number.isInteger(numeric)&&String(value).trim()!==''&&names[numeric])return names[numeric];return ({XRay:'X-ray',AwaitingReport:'Awaiting report',Canceled:'Cancelled'}[value]||String(value))};
+
+export default function PatientDashboard({user,onNavigate,request}){
+ const [counts,setCounts]=useState({}),[recent,setRecent]=useState([]),[loading,setLoading]=useState(true),[ordersLoading,setOrdersLoading]=useState(true);
+ const firstName=(user?.fullName||'there').split(' ')[0];
+ useEffect(()=>{let alive=true;Promise.all(panels.map(async panel=>{try{return [panel.group,count(await request(panel.path))]}catch{return [panel.group,'—']}})).then(entries=>{if(alive){setCounts(Object.fromEntries(entries));setLoading(false)}});request('/RadiologyOrder/my-orders?pageNumber=1&pageSize=5').then(result=>{if(alive)setRecent(items(result))}).catch(()=>alive&&setRecent([])).finally(()=>alive&&setOrdersLoading(false));return()=>{alive=false}},[request]);
+ return <div className="role-dashboard dashboard-patient patient-home">
+  <section className="dashboard-hero"><div className="dashboard-hero-copy"><span className="eyebrow">YOUR CARE</span><h1>Welcome back, {firstName}</h1><p>Your imaging appointments, results, care plans, and billing in one place.</p></div><div className="dashboard-hero-mark"><HeartPulse size={28}/></div></section>
+  <section className="patient-records-section"><div className="patient-section-heading"><div><span className="eyebrow">PERSONAL RECORDS</span><h2>Your health information</h2><p>Open a section to review the latest information in your record.</p></div><span className="patient-secure-note"><FileHeart size={15}/> Private to your account</span></div>
+   <div className="patient-record-grid">{panels.map(panel=>{const Glyph=panel.icon;return <button className="patient-record-card" key={panel.group} onClick={()=>onNavigate(panel.group)}><span className={`patient-record-icon tone-${panel.tone}`}><Glyph size={19}/></span><span className="patient-record-copy"><b>{panel.label}</b><small>{loading?'Loading…':`${counts[panel.group]??0} ${counts[panel.group]===1?'record':'records'}`}</small></span><ChevronRight size={17} className="patient-record-arrow"/></button>})}</div>
+  </section>
+  <section className="dashboard-panel patient-recent-orders"><div className="dashboard-panel-heading"><div><span className="eyebrow">APPOINTMENT ACTIVITY</span><h2>Recent imaging orders</h2><p>Check your upcoming and previous imaging appointments.</p></div><button className="text-btn" onClick={()=>onNavigate('Orders')}>View all orders <ArrowRight size={14}/></button></div>
+   {ordersLoading?<div className="patient-orders-empty">Loading your orders…</div>:recent.length===0?<div className="patient-orders-empty"><span className="patient-empty-icon"><CalendarDays size={18}/></span><b>No imaging orders yet</b><span>Your appointments will appear here when they are scheduled.</span></div>:<div className="patient-order-list">{recent.map((order,index)=>{const id=order.orderId??order.OrderId??index;const scheduled=order.scheduledAt??order.ScheduledAt;return <button className="patient-order-row" key={id} onClick={()=>onNavigate('Orders')}><span className="patient-order-icon"><CalendarDays size={17}/></span><span className="patient-order-main"><b>{order.modality??order.Modality??'Imaging'}{(order.bodyPart??order.BodyPart)?` · ${order.bodyPart??order.BodyPart}`:''}</b><small>{order.accessionNumber??order.AccessionNumber?`Accession ${order.accessionNumber??order.AccessionNumber} · `:''}Order #{id}</small></span><span className="patient-order-meta"><b>{scheduled?new Date(scheduled).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'Date pending'}</b><small>{statusName(order.status??order.Status)}</small></span><ChevronRight size={16}/></button>})}</div>}
+  </section>
+ </div>;
+}

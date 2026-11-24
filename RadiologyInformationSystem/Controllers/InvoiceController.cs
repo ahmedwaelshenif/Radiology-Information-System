@@ -26,7 +26,7 @@ namespace RadiologyInformationSystem.Controllers
        
 
         [HttpGet]
-        [Authorize(Roles = "Admin,Radiologist")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult> GetAll(int pageNumber = 1,int pageSize = 10) 
         {
 
@@ -46,7 +46,7 @@ namespace RadiologyInformationSystem.Controllers
 
 
         [HttpGet("{invoiceId:int}")]
-        [Authorize(Roles = "Admin,Radiologist")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult> GetById(int invoiceId)
         {
             try
@@ -61,7 +61,7 @@ namespace RadiologyInformationSystem.Controllers
         }
 
         [HttpGet("order/{orderId:int}")]
-        [Authorize(Roles = "Admin,Radiologist")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult> GetByOrderId(int orderId)
         {
             try
@@ -75,7 +75,7 @@ namespace RadiologyInformationSystem.Controllers
             }
         }
         [HttpGet("patient/{patientId:int}")]
-        [Authorize(Roles = "Admin,Radiologist")]
+        [Authorize(Roles = "Admin,Receptionist")]
         public async Task<IActionResult> GetByPatient(
             int patientId,
             [FromQuery] int pageNumber = 1,
@@ -92,8 +92,8 @@ namespace RadiologyInformationSystem.Controllers
             }
         }
         [HttpGet("search")]
-        [Authorize(Roles = "Admin,Radiologist")]
-        public async Task<IActionResult> Search(InvoiceSearchDto filter) 
+        [Authorize(Roles = "Admin,Receptionist")]
+        public async Task<IActionResult> Search([FromQuery] InvoiceSearchDto filter) 
         {
             var result = await _InvoiceService.SearchAsync(filter);
             return Ok(result);
@@ -103,7 +103,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search-my")]
         [Authorize(Roles = "Patient")]
-        public async Task<IActionResult> SearchMyInvoices(InvoiceSearchDto filter) 
+        public async Task<IActionResult> SearchMyInvoices([FromQuery] InvoiceSearchDto filter) 
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             var result = await _InvoiceService.SearchMyInvoicesAsync(filter,userId);

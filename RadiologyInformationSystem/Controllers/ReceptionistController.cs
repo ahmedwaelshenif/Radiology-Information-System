@@ -44,7 +44,7 @@ namespace RadiologyInformationSystem.Controllers
 
         [HttpGet("search")]
         [Authorize(Roles = "Admin,Receptionist")]
-        public async Task<IActionResult> Search(ReceptionistSearchDto searchDto)
+        public async Task<IActionResult> Search([FromQuery] ReceptionistSearchDto searchDto)
         {
             var res = await _receptionistService.SearchAsync(searchDto);
             return Ok(res);

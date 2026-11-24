@@ -25,6 +25,7 @@ namespace Infrastructure.Persistence
         public DbSet<CDSSResult> CDSSResults { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<HL7Message> HL7Messages { get; set; }
+        public DbSet<StudyUID> StudyUIDs => Set<StudyUID>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -47,6 +48,20 @@ namespace Infrastructure.Persistence
                 entity.Property(u => u.PasswordHash)
                     .IsRequired();
             });
+
+            // Seed the available DICOM study instance UIDs by modality.
+            modelBuilder.Entity<StudyUID>().HasData(
+                new StudyUID { Id = 1, Modality = Domain.Enums.Modality.XRay, StudyInstanceUID = "1.3.6.1.4.1.14519.5.2.1.9999.103.2003757953720308493720544525327" },
+                new StudyUID { Id = 2, Modality = Domain.Enums.Modality.XRay, StudyInstanceUID = "1.2.392.200036.9125.0.199302241758.16" },
+                new StudyUID { Id = 3, Modality = Domain.Enums.Modality.CT, StudyInstanceUID = "1.3.6.1.4.1.14519.5.2.1.6919.4624.107720852982298931479046337475" },
+                new StudyUID { Id = 4, Modality = Domain.Enums.Modality.CT, StudyInstanceUID = "1.3.6.1.4.1.14519.5.2.1.6919.4624.508771521556732938904058410751" },
+                new StudyUID { Id = 5, Modality = Domain.Enums.Modality.Mammography, StudyInstanceUID = "1.3.6.1.4.1.14519.5.2.1.1239.1759.860502043886043938075747571015" },
+                new StudyUID { Id = 6, Modality = Domain.Enums.Modality.MRI, StudyInstanceUID = "1.2.840.4892943.343.20240528040031.5710.1656205" },
+                new StudyUID { Id = 7, Modality = Domain.Enums.Modality.MRI, StudyInstanceUID = "1.3.46.670589.11.84425.5.0.14744.2025051016220214026" },
+                new StudyUID { Id = 8, Modality = Domain.Enums.Modality.MRI, StudyInstanceUID = "1.2.840.4892943.343.20250413070448.1553.2122473" },
+                new StudyUID { Id = 9, Modality = Domain.Enums.Modality.Ultrasound, StudyInstanceUID = "1.3.6.1.4.1.14519.5.2.1.1.23350688958676093611472873878291718902" },
+                new StudyUID { Id = 10, Modality = Domain.Enums.Modality.Ultrasound, StudyInstanceUID = "1.3.6.1.4.1.14519.5.2.1.205603453180402812780236219545985083918" }
+            );
 
             // Patient - User (one-to-one)
             modelBuilder.Entity<Patient>(entity =>
@@ -76,9 +91,7 @@ namespace Infrastructure.Persistence
                     .WithOne(i => i.Patient)
                     .HasForeignKey(i => i.PatientId);
 
-                entity.HasMany(p => p.Prescriptions)
-                    .WithOne()
-                    .HasForeignKey(prescription => prescription.PatientId);
+                
             });
 
             // Radiologist - User (One-to-One)
@@ -112,22 +125,26 @@ namespace Infrastructure.Persistence
             modelBuilder.Entity<MedicalRecord>()
                 .HasOne(m => m.RecordedByUser)
                 .WithMany()
-                .HasForeignKey(m => m.RecordedByUserId);
+                .HasForeignKey(m => m.RecordedByUserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Prescription>()
                 .HasOne(p => p.CreatedByUser)
                 .WithMany()
-                .HasForeignKey(p => p.CreatedByUserId);
+                .HasForeignKey(p => p.CreatedByUserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<TreatmentPlan>()
                 .HasOne(t => t.CreatedByUser)
                 .WithMany()
-                .HasForeignKey(t => t.CreatedByUserId);
+                .HasForeignKey(t => t.CreatedByUserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<RadiologyOrder>()
                 .HasOne(o => o.OrderedByUser)
                 .WithMany()
-                .HasForeignKey(o => o.OrderedByUserId);
+                .HasForeignKey(o => o.OrderedByUserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<RadiologyOrder>()
                 .HasOne(o => o.Study)
@@ -152,7 +169,8 @@ namespace Infrastructure.Persistence
             modelBuilder.Entity<RadiologyReport>()
                 .HasOne(r => r.CreatedByUser)
                 .WithMany()
-                .HasForeignKey(r => r.CreatedByUserId);
+                .HasForeignKey(r => r.CreatedByUserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<RadiologyStudy>()
                 .HasMany(s => s.CDSSResults)
