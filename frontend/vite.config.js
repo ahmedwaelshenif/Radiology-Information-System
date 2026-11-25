@@ -10,7 +10,9 @@ export default defineConfig({
         target:apiTarget,
         changeOrigin:true,
         secure:false,
-        rewrite:path=>path.replace(/^\/api/,'')
+        // Most controllers use routes like /RadiologyOrder, so remove the frontend proxy prefix.
+        // BookOrderController itself is explicitly routed under /api/BookOrder; preserve that prefix.
+        rewrite:path=>path.startsWith('/api/BookOrder')?path:path.replace(/^\/api/,'')
       }
     }
   }

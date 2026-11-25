@@ -1,5 +1,5 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {ArrowLeft,ArrowRight,CalendarDays,CheckCircle2,ChevronRight,Clock3,ShieldCheck,Users,XCircle} from 'lucide-react';
+import {ArrowLeft,ArrowRight,CalendarDays,CheckCircle2,ChevronRight,Clock3,ShieldCheck,Users,Wallet,XCircle} from 'lucide-react';
 import {endpoints} from './config/apiCatalog.js';
 
 const orderStatuses=[
@@ -10,7 +10,7 @@ const orderStatuses=[
 const localDateKey=date=>`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
 const totalFrom=result=>Number(result?.totalCount??result?.TotalCount??result?.totalItems??result?.TotalItems??(Array.isArray(result)?result.length:0))||0;
 
-export default function AdminDashboard({user,onNavigate,request}){
+export default function AdminDashboard({user,onNavigate,onAction,available=[],request}){
  const [stats,setStats]=useState([]),[todayCounts,setTodayCounts]=useState([]),[weeklyRevenue,setWeeklyRevenue]=useState([]),[weekOffset,setWeekOffset]=useState(0);
  const [loading,setLoading]=useState(true),[todayLoading,setTodayLoading]=useState(true),[revenueLoading,setRevenueLoading]=useState(true);
  const firstName=(user?.fullName||'there').split(' ')[0];
@@ -48,6 +48,7 @@ export default function AdminDashboard({user,onNavigate,request}){
  return <div className="role-dashboard dashboard-admin">
   <section className="dashboard-hero"><div className="dashboard-hero-copy"><span className="eyebrow">ADMINISTRATION WORKSPACE</span><h1>Good day, {firstName}</h1><p>Monitor registered accounts and manage access across the organization.</p></div><div className="dashboard-hero-mark"><ShieldCheck size={28}/></div></section>
   <section className="dashboard-metrics">{stats.map((item,index)=>{const Glyph=Users;return <button key={item.label} type="button" className="dashboard-metric is-clickable" onClick={()=>onNavigate(targets[index][0],targets[index][1])}><span className={`metric-icon metric-${index}`}><Glyph size={18}/></span><span className="metric-label">{item.label}</span><strong>{loading?'—':item.value??'—'}</strong><small>Registered accounts</small><ChevronRight size={16} className="metric-arrow"/></button>})}</section>
+  <section className="dashboard-panel price-management-panel"><div className="dashboard-panel-heading"><div><span className="eyebrow">PRICING</span><h2>Modality prices</h2><p>Keep imaging prices up to date for each modality.</p></div><button className="secondary-btn" type="button" onClick={()=>{const endpoint=available.find(item=>item.key==='price-update');if(endpoint)onAction(endpoint)}}><Wallet size={16}/>Update a price</button></div></section>
   <section className="order-count-section"><div className="order-count-heading"><div><span className="eyebrow">TODAY</span><h2>Orders scheduled today</h2><p>Today’s order totals by status.</p></div><button className="text-btn" onClick={()=>onNavigate('Orders')}>View orders <ArrowRight size={14}/></button></div><div className="order-count-cards">{todayCounts.map(item=>{const Glyph=item.icon;return <article className={`order-count-card order-count-${item.tone}`} key={item.status}><span className="order-count-icon"><Glyph size={19}/></span><span className="order-count-label">{item.label}</span><strong>{todayLoading?'—':item.value??'—'}</strong><small>Today</small></article>})}</div></section>
   <WeeklyRevenueGraph days={weeklyRevenue} loading={revenueLoading} weekLabel={weekLabel} canGoForward={weekOffset<0} onPrevious={()=>setWeekOffset(offset=>offset-1)} onNext={()=>setWeekOffset(offset=>Math.min(0,offset+1))}/>
  </div>;

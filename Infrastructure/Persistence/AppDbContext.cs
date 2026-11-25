@@ -67,13 +67,13 @@ namespace Infrastructure.Persistence
 
             // Seed development prices for every supported imaging modality.
             modelBuilder.Entity<Price>().HasData(
-                new Price { Id = 1, Name = nameof(Domain.Enums.Modality.MRI), Amount = 1500m },
-                new Price { Id = 2, Name = nameof(Domain.Enums.Modality.CT), Amount = 1000m },
-                new Price { Id = 3, Name = nameof(Domain.Enums.Modality.XRay), Amount = 300m },
-                new Price { Id = 4, Name = nameof(Domain.Enums.Modality.Ultrasound), Amount = 500m },
-                new Price { Id = 5, Name = nameof(Domain.Enums.Modality.PET), Amount = 2500m },
-                new Price { Id = 6, Name = nameof(Domain.Enums.Modality.Mammography), Amount = 700m },
-                new Price { Id = 7, Name = nameof(Domain.Enums.Modality.Fluoroscopy), Amount = 1200m }
+                new Price { Id = 1, Name = Domain.Enums.Modality.MRI, Amount = 1500m },
+                new Price { Id = 2, Name = Domain.Enums.Modality.CT, Amount = 1000m },
+                new Price { Id = 3, Name = Domain.Enums.Modality.XRay, Amount = 300m },
+                new Price { Id = 4, Name = Domain.Enums.Modality.Ultrasound, Amount = 500m },
+                new Price { Id = 5, Name = Domain.Enums.Modality.PET, Amount = 2500m },
+                new Price { Id = 6, Name = Domain.Enums.Modality.Mammography, Amount = 700m },
+                new Price { Id = 7, Name = Domain.Enums.Modality.Fluoroscopy, Amount = 1200m }
             );
 
             // Patient - User (one-to-one)
