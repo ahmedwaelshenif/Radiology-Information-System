@@ -329,6 +329,38 @@
 .shell.theme-dark .radiologist-patient-table .row-action.plans,.shell.theme-dark .radiologist-patient-table .row-action.records,.shell.theme-dark .radiologist-patient-table .row-action.studies,.shell.theme-dark .radiologist-patient-table .row-action.orders,.shell.theme-dark .radiologist-orders-table .row-action.study,.shell.theme-dark .radiologist-studies-table .row-action.study,.shell.theme-dark .radiologist-studies-table .row-action.update,.shell.theme-dark .radiologist-treatment-plans-table .row-action.add.rx,.shell.theme-dark .radiologist-treatment-plans-table .row-action.prescriptions,.shell.theme-dark .radiologist-prescriptions-table .row-action.plan,.shell.theme-dark .radiologist-prescriptions-table .row-action.replace,.shell.theme-dark .radiologist-reports-table .row-action.download,.shell.theme-dark .radiologist-reports-table .row-action.edit{background:#21192b!important;border-color:#49345f!important;color:#d8b7fa!important}
 .shell.theme-dark .radiologist-treatment-plans-table .row-action.complete{background:#19251f!important;border-color:#355341!important;color:#a9ddb9!important}
 .shell.theme-dark .radiologist-treatment-plans-table .row-action.cancel,.shell.theme-dark .radiologist-prescriptions-table .row-action.cancel,.shell.theme-dark .radiologist-reports-table .row-action.delete{background:#291b20!important;border-color:#57343d!important;color:#efabb4!important}
+.theme-dark .role-action-icon,.theme-dark .feed-row-icon,.theme-dark .attention-icon.awaiting,.theme-dark .patient-order-icon,.theme-dark .patient-empty-icon,.theme-dark .empty-symbol,.theme-dark .dashboard-empty .empty-symbol,.theme-dark .summary-mark,.theme-dark .record-modal .modal-close,.theme-dark .action-modal .modal-close,.theme-dark .detail-modal .modal-close{background:#241a32!important;border-color:#403052!important;color:#c084fc!important}
+.theme-dark .role-action:hover,.theme-dark .dashboard-feed-row:hover,.theme-dark .attention-row:hover,.theme-dark .patient-order-row:hover{background:#1c1724!important;border-color:#49345f!important}
+.theme-dark .dashboard-feed-row{border-color:#292832;color:#bcb6c5}
+.theme-dark .dashboard-feed-row:hover .feed-row-main b{color:#c084fc}
+.theme-dark .attention-icon{background:#302718;color:#f2bd62}
+.theme-dark .attention-icon.done{background:#1b3027;color:#83d5a5}
+.theme-dark .weekly-bar-track{background:#211c29}
+.theme-dark .weekly-bar{background:linear-gradient(180deg,#c084fc,#7c3aed)}
+.theme-dark .weekly-total strong{color:#f3effb}
+.theme-dark .weekly-total small{color:#aaa4b4}
+.theme-dark .segmented-tabs{background:#17141d;border:1px solid #30293b}
+.theme-dark .segmented-tabs button{color:#aaa4b4}
+.theme-dark .segmented-tabs button.selected{background:#2a1d38;color:#d5b2fa;box-shadow:none}
+.theme-dark .detail-item{background:#17171d;border-color:#302e39}
+.theme-dark .detail-item span{color:#a59eaf}
+.theme-dark .detail-item b{color:#e8e3ed}
+.theme-dark .success-box{background:#19261f;border-color:#30483a;color:#a4c9b0}
+.theme-dark .spinner.blue-spinner{border-color:#393044;border-top-color:#c084fc}
+.theme-dark .field input:focus,.theme-dark .field select:focus,.theme-dark .field textarea:focus,.theme-dark .input-wrap:focus-within{border-color:#9a63d8;box-shadow:0 0 0 3px #8b5ec22b}
+.theme-dark button:focus-visible,.theme-dark input:focus-visible,.theme-dark textarea:focus-visible{outline-color:#a855f7}
+.theme-dark .data-table tbody tr.data-row-clickable:focus-visible{outline-color:#a855f7}
+.theme-dark .icon-btn:hover{background:#241a32;color:#c084fc}
+.theme-dark .radiologist-prescriptions-table .row-action:focus-visible,.theme-dark .radiologist-reports-table .row-action:focus-visible,.theme-dark .radiologist-treatment-plans-table .row-action:focus-visible{outline-color:#a855f7}
+.theme-dark{--cyan:#c084fc;--cyan-dark:#a855f7;--pale:#241a32;--blue:#c084fc}
+.brand-icon{width:39px;height:39px;border-radius:0;background:transparent;box-shadow:none;color:#158ba5}
+.radiology-mark{display:inline-block;flex:0 0 auto;background:currentColor;mask-repeat:no-repeat;mask-position:center;mask-size:contain;-webkit-mask-repeat:no-repeat;-webkit-mask-position:center;-webkit-mask-size:contain}
+.brand-icon.large{width:58px;height:58px;margin-bottom:8px;color:#147f98}
+.brand-icon.mini{width:26px;height:26px;border-radius:0;color:#158ba5}
+.brand-icon svg,.footer-mark svg{filter:drop-shadow(0 2px 5px #168aa51a)}
+.footer-mark{width:28px;height:28px;border-radius:0;background:transparent;color:#158ba5}
+.theme-dark .brand-icon,.login-page.theme-dark .brand-icon{background:transparent!important;box-shadow:none!important;color:#c084fc!important}
+.theme-dark .footer-mark{background:transparent!important;color:#c084fc!important}
 @media(max-width:820px){.shell.sidebar-collapsed .profile-row{display:none}.shell.sidebar-collapsed .logout-btn{width:100%;min-width:0;min-height:38px;align-self:stretch;justify-content:flex-start;padding:0 11px}.shell.sidebar-collapsed .logout-btn span{display:inline}}
 @media(max-width:500px){.logout-confirm-dialog{padding:23px 18px}.logout-confirm-actions{flex-direction:column-reverse}.logout-confirm-actions button{width:100%}}
 .records-page .data-table td .status-value{display:inline-flex;align-items:center;gap:6px;font-weight:650;letter-spacing:.01em}
@@ -338,3 +370,5 @@
 .records-page .data-table td .status-value.status-danger{border-color:#f0d1cf!important}
 .records-page .data-table td .status-value.status-warning{border-color:#eadbb8!important}
 .records-page .data-table td .status-value.status-active{border-color:#ddcff5!important}
+.revenue-summary{display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:flex-end}.revenue-week-controls{display:flex;align-items:center;gap:8px}.revenue-week-controls>span{display:inline-flex;align-items:center;gap:7px;min-width:165px;justify-content:center;color:#637b8e;font-size:13px;font-weight:600}.revenue-week-controls .secondary-btn{width:34px;height:34px;padding:0;display:grid;place-items:center}.revenue-week-controls .secondary-btn:disabled{opacity:.42;cursor:not-allowed}@media(max-width:760px){.revenue-summary{width:100%;justify-content:space-between}.revenue-week-controls>span{min-width:0}}
+.danger-btn{min-height:38px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 14px;border:1px solid #edcaca;border-radius:9px;background:#fff5f4;color:#a83c37;font-size:12px;font-weight:700;transition:background .15s,border-color .15s,transform .15s}.danger-btn:hover:not(:disabled){background:#ffe9e7;border-color:#dfaaa6;transform:translateY(-1px)}.danger-btn:disabled{opacity:.58;cursor:not-allowed}.deactivate-confirmation{display:grid;gap:5px;margin-top:16px;padding:13px 15px;border:1px solid #f0d6d3;border-radius:11px;background:#fff8f7}.deactivate-confirmation b{font-size:13px;color:#963f3a}.deactivate-confirmation span{font-size:12px;line-height:1.5;color:#816d6a}.theme-dark .danger-btn{background:#2b1b20;border-color:#563039;color:#f0a9aa}.theme-dark .danger-btn:hover:not(:disabled){background:#3a2026;border-color:#74404b;color:#ffc3c4}.theme-dark .deactivate-confirmation{background:#21171b;border-color:#4b3037}.theme-dark .deactivate-confirmation b{color:#ffc0c2}.theme-dark .deactivate-confirmation span{color:#c5aeb3}
