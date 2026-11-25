@@ -3,7 +3,7 @@ using Domain.Enums;
 
 namespace Application.DTOs.RequestDto
 {
-    public class InvoiceSearchDto
+    public class InvoiceSearchDto: PagedRequestDto
     {
         public int? InvoiceId { get; set; }
         public int? PatientId { get; set; }
@@ -22,7 +22,6 @@ namespace Application.DTOs.RequestDto
         public DateTime? CreatedFrom { get; set; }
         public DateTime? CreatedTo { get; set; }
 
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 10;
+      
     }
 }

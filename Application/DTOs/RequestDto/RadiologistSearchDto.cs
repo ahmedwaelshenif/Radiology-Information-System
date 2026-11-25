@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Application.DTOs.RequestDto
 {
-    public class RadiologistSearchDto
+    public class RadiologistSearchDto : PagedRequestDto
     {
         public int? Id { get; set; }
         public int? UserId { get; set; }
@@ -14,10 +14,6 @@ namespace Application.DTOs.RequestDto
         public string? Email { get; set; }
         public string? LicenseNumber { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public int PageNumber { get; set; } = 1;
-
-        [Range(1, 100)]
-        public int PageSize { get; set; } = 10;
+      
     }
 }

@@ -73,13 +73,13 @@ namespace Application.Services
             {
                 throw new ArgumentException("this modality can not be found");
             }
-            decimal amount = mod.Amount;
+            
             var invoice = new Invoice
             {
-                Amount = amount,
+                Amount = mod.Amount,
                 Order=order,
                 PatientId=dto.PatientId,
-                CreatedAt=DateTime.Today,
+                CreatedAt=DateTime.UtcNow,
                 PaymentMethod=dto.PaymentMethod,
             };
             await _unitOfWork.Repository<RadiologyOrder>().AddAsync(order);

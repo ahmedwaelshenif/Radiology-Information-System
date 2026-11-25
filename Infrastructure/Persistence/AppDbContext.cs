@@ -27,6 +27,7 @@ namespace Infrastructure.Persistence
         public DbSet<HL7Message> HL7Messages { get; set; }
         public DbSet<StudyUID> StudyUIDs => Set<StudyUID>();
         public DbSet<Price> Prices { get; set; }
+        public DbSet<BookOrder> BookOrders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -182,6 +183,14 @@ namespace Infrastructure.Persistence
                 .HasMany(o => o.HL7Messages)
                 .WithOne(h => h.Order)
                 .HasForeignKey(h => h.OrderId);
+
+            // Patient booking requests
+            modelBuilder.Entity<BookOrder>()
+                .HasOne(b => b.Patient)
+                .WithMany()
+                .HasForeignKey(b => b.PatientId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
 
             // Gender configuration
             modelBuilder.Entity<Patient>()

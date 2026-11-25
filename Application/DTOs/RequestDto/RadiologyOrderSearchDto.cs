@@ -3,7 +3,7 @@ using Domain.Enums;
 
 namespace Application.DTOs.RequestDto
 {
-    public class RadiologyOrderSearchDto
+    public class RadiologyOrderSearchDto : PagedRequestDto
     {
         public int? OrderId { get; set; }
         public int? PatientId { get; set; }
@@ -24,7 +24,6 @@ namespace Application.DTOs.RequestDto
         public DateTime? ScheduledFrom { get; set; }
         public DateTime? ScheduledTo { get; set; }
 
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 10;
+
     }
 }

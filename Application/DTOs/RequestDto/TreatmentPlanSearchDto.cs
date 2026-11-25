@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Application.DTOs.RequestDto
 {
-    public class TreatmentPlanSearchDto
+    public class TreatmentPlanSearchDto : PagedRequestDto
     {
         public int? Id { get; set; }
         public int? PatientId { get; set; }
@@ -15,8 +15,6 @@ namespace Application.DTOs.RequestDto
         public DateOnly? Date { get; set; }
         public TreatmentPlanStatus? Status { get; set; }
 
-        public int PageNumber { get; set; } = 1;
 
-        public int PageSize { get; set; } = 10;
     }
 }

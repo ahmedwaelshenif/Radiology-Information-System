@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Application.DTOs.RequestDto
 {
-    public class PatientSearchDto
+    public class PatientSearchDto : PagedRequestDto
     {
         public int? Id { get; set; }
 
@@ -24,11 +24,7 @@ namespace Application.DTOs.RequestDto
 
         public string? PhoneNumber { get; set; }
 
-        [Range(1, int.MaxValue)]
-        public int PageNumber { get; set; } = 1;
-
-        [Range(1, 100)]
-        public int PageSize { get; set; } = 10;
+    
 
 
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Application.DTOs.RequestDto
 {
-    public class MedicalRecordSearchDto
+    public class MedicalRecordSearchDto : PagedRequestDto
     {
         public int? UserId { get; set; }
         public int? PatientId { get; set; }
@@ -13,8 +13,6 @@ namespace Application.DTOs.RequestDto
 
         public string? RadiologistName { get; set; }
 
-        public int PageNumber { get; set; } = 1;
-
-        public int PageSize { get; set; } = 10;
+ 
     }
 }

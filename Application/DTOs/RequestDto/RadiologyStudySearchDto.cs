@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Application.DTOs.RequestDto
 {
-    public  class RadiologyStudySearchDto
+    public  class RadiologyStudySearchDto : PagedRequestDto
     {
         public int? StudyId { get; set; }
         public int? OrderId { get; set; }
@@ -16,7 +16,6 @@ namespace Application.DTOs.RequestDto
         public StudyStatus? Status { get; set; }
         public DateOnly? StudyDateFrom { get; set; }
         public DateOnly? StudyDateTo { get; set; }
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 10;
+   
     }
 }
