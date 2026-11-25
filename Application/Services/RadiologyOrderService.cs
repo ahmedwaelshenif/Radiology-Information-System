@@ -68,9 +68,15 @@ namespace Application.Services
 
             };
 
+            Price ?mod = await _unitOfWork.Repository<Price>().FirstOrDefaultAsync(p => p.Name == dto.Modality.ToString());
+            if (mod == null)
+            {
+                throw new ArgumentException("this modality can not be found");
+            }
+            decimal amount = mod.Amount;
             var invoice = new Invoice
             {
-                Amount = dto.Amount,
+                Amount = amount,
                 Order=order,
                 PatientId=dto.PatientId,
                 CreatedAt=DateTime.Today,

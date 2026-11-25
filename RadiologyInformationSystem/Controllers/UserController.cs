@@ -94,6 +94,24 @@ namespace RadiologyInformationSystem.Controllers
                 return Ok(result);
         }
 
+        [HttpPost("Update-User")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> UpdateUser(UpdateUserDto dto,int id)
+        {
+            await _userService.UpdateUserInformation(dto, id);
+            return NoContent();
+        }
+
+        [HttpPost("Update-My-User")]
+        [Authorize(Roles = "Admin,Receptionist,Radiologist,Patient")]
+        public async Task<IActionResult> UpdateMyUser(UpdateUserDto dto)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+            await _userService.UpdateMyInformation(dto, userId);
+            return NoContent();
+        }
+
        
 
 

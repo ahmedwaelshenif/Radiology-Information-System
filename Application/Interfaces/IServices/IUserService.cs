@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application.DTOs.RequestDto;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,5 +12,9 @@ namespace Application.Interfaces.IServices
         Task<int> CountRadiologistsAsync();
         Task<int> CountReceptionistsAsync();
         Task<int> CountPatientsAsync();
+
+        Task UpdateUserInformation(UpdateUserDto dto, int id);
+
+        Task UpdateMyInformation(UpdateUserDto dto, int id);
     }
 }

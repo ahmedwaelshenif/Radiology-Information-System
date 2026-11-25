@@ -26,6 +26,7 @@ namespace Infrastructure.Persistence
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<HL7Message> HL7Messages { get; set; }
         public DbSet<StudyUID> StudyUIDs => Set<StudyUID>();
+        public DbSet<Price> Prices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
