@@ -19,7 +19,7 @@ namespace Application.Services
         }
         public async Task UpdateModalityPrice(Modality mod, decimal amount)
         {
-            Price ?entity = await _unitOfWork.Repository<Price>().FirstOrDefaultAsync(p => p.Name == mod.ToString());
+            Price ?entity = await _unitOfWork.Repository<Price>().FirstOrDefaultAsync(p => p.Name == mod);
             if (entity == null)
             {
                 throw new ArgumentException("this modality can not be found");

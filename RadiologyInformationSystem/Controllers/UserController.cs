@@ -98,7 +98,14 @@ namespace RadiologyInformationSystem.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateUser(UpdateUserDto dto,int id)
         {
-            await _userService.UpdateUserInformation(dto, id);
+            try
+            {
+                await _userService.UpdateUserInformation(dto, id);
+            }
+            catch(ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             return NoContent();
         }
 

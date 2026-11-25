@@ -117,6 +117,10 @@ namespace Application.Services
             {
                 throw new KeyNotFoundException("This user cannot be found");
             }
+            if (user.Role == Role.Admin)
+            {
+                throw new ArgumentException("You can not edit admin data");
+            }
 
             if (dto.NewPassword != null)
             {

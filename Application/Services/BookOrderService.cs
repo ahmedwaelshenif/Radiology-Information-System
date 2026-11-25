@@ -202,7 +202,7 @@ namespace Application.Services
 
             };
 
-            Price? mod = await _unitOfWork.Repository<Price>().FirstOrDefaultAsync(p => p.Name == bookOrder.Modality.ToString());
+            Price? mod = await _unitOfWork.Repository<Price>().FirstOrDefaultAsync(p => p.Name == bookOrder.Modality);
             if (mod == null)
             {
                 throw new ArgumentException("this modality can not be found");
