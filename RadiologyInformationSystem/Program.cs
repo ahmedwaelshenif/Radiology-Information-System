@@ -43,11 +43,9 @@ builder.Services.AddScoped<IRadiologyStudyService, RadiologyStudyService>();
 builder.Services.AddScoped<IReceptionistService, ReceptionistService>();
 builder.Services.AddScoped<ITreatmentPlanService, TreatmentPlanService>();
 builder.Services.AddScoped<IUserService, UserService>();
-<<<<<<< HEAD
 builder.Services.AddScoped<IBookOrderService, BookOrderService>();
-=======
 builder.Services.AddScoped<IPriceService,PriceService>();
->>>>>>> 7642399a3bf31cc46e1d19a5daf14068524f9b59
+
 
 // Password Hasher
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
