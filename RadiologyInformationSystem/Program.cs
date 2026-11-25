@@ -1,6 +1,7 @@
 
 using Application.Interfaces.IRepositories;
 using Application.Interfaces.IServices;
+using Application.Interfaces.Services;
 using Application.Services;
 using Application.Settings;
 using Domain.Entities;
@@ -42,6 +43,7 @@ builder.Services.AddScoped<IRadiologyStudyService, RadiologyStudyService>();
 builder.Services.AddScoped<IReceptionistService, ReceptionistService>();
 builder.Services.AddScoped<ITreatmentPlanService, TreatmentPlanService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPriceService,PriceService>();
 
 // Password Hasher
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
