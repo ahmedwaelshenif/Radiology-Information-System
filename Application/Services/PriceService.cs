@@ -1,4 +1,5 @@
-﻿using Application.Interfaces.IRepositories;
+﻿using Application.DTOs.ResponseDto;
+using Application.Interfaces.IRepositories;
 using Application.Interfaces.Services;
 using Domain.Entities;
 using Domain.Enums;
@@ -27,6 +28,15 @@ namespace Application.Services
             entity.Amount = amount;
 
             await _unitOfWork.SaveChangesAsync();
+        }
+
+        public async Task<List<PriceResponseDto>> GetAllAsync() { 
+            var prices= await _unitOfWork.Repository<Price>().GetAllAsync();
+            return prices.Select(p => new PriceResponseDto
+            {
+                Modality = p.Name,
+                Amount = p.Amount
+            }).ToList();
         }
     }
 }

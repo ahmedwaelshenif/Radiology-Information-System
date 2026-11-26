@@ -44,7 +44,12 @@ namespace RadiologyInformationSystem.Controllers
         }
 
 
-
+        [HttpGet]
+        [Authorize(Roles = "Admin,Patient,Receptionist")]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _priceService.GetAllAsync());
+        }
 
 
 

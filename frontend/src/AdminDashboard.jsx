@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from 'react';
-import {ArrowLeft,ArrowRight,CalendarDays,CheckCircle2,ChevronRight,Clock3,ShieldCheck,Users,Wallet,XCircle} from 'lucide-react';
+import {ArrowLeft,ArrowRight,CalendarDays,CheckCircle2,ChevronRight,Clock3,RefreshCw,ShieldCheck,Users,Wallet,XCircle} from 'lucide-react';
 import {endpoints} from './config/apiCatalog.js';
+import {fetchOrderCountsForDate} from './orderCounts.js';
 
 const orderStatuses=[
  {status:'Scheduled',label:'Scheduled',icon:Clock3,tone:'scheduled'},
@@ -8,10 +9,9 @@ const orderStatuses=[
  {status:'Cancelled',label:'Cancelled',icon:XCircle,tone:'cancelled'}
 ];
 const localDateKey=date=>`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
-const totalFrom=result=>Number(result?.totalCount??result?.TotalCount??result?.totalItems??result?.TotalItems??(Array.isArray(result)?result.length:0))||0;
 
 export default function AdminDashboard({user,onNavigate,onAction,available=[],request}){
- const [stats,setStats]=useState([]),[todayCounts,setTodayCounts]=useState([]),[weeklyRevenue,setWeeklyRevenue]=useState([]),[weekOffset,setWeekOffset]=useState(0);
+ const [stats,setStats]=useState([]),[todayCounts,setTodayCounts]=useState([]),[selectedOrderDate,setSelectedOrderDate]=useState(()=>localDateKey(new Date())),[weeklyRevenue,setWeeklyRevenue]=useState([]),[prices,setPrices]=useState([]),[priceReload,setPriceReload]=useState(0),[pricesLoading,setPricesLoading]=useState(true),[priceError,setPriceError]=useState(''),[weekOffset,setWeekOffset]=useState(0);
  const [loading,setLoading]=useState(true),[todayLoading,setTodayLoading]=useState(true),[revenueLoading,setRevenueLoading]=useState(true);
  const firstName=(user?.fullName||'there').split(' ')[0];
  const weekDays=useMemo(()=>{
@@ -26,13 +26,22 @@ export default function AdminDashboard({user,onNavigate,onAction,available=[],re
   let alive=true;
   const metrics=[['count-patient','Patients'],['count-rad','Radiologists'],['count-rec','Receptionists']];
   Promise.all(metrics.map(async([key,label])=>{try{return {label,value:await request(endpoints.find(e=>e.key===key).path)}}catch{return {label,value:'—'}}})).then(values=>{if(alive){setStats(values);setLoading(false)}});
-  const today=new Date();const start=new Date(today.getFullYear(),today.getMonth(),today.getDate());const end=new Date(start);end.setDate(end.getDate()+1);end.setMilliseconds(-1);
-  Promise.all(orderStatuses.map(async item=>{
-   const query=new URLSearchParams({Status:item.status,ScheduledFrom:start.toISOString(),ScheduledTo:end.toISOString(),PageNumber:'1',PageSize:'1'});
-   try{return {...item,value:totalFrom(await request('/RadiologyOrder/search?'+query.toString()))}}catch{return {...item,value:'—'}}
-  })).then(values=>{if(alive){setTodayCounts(values);setTodayLoading(false)}});
   return()=>{alive=false};
  },[request]);
+
+ useEffect(()=>{
+  let alive=true;setPricesLoading(true);setPriceError('');
+  request(endpoints.find(item=>item.key==='price-list')?.path||'/Price/GetAll').then(result=>{
+   if(!alive)return;const rows=result?.items||result?.Items||result?.prices||result?.Prices||(Array.isArray(result)?result:[]);setPrices(rows);
+  }).catch(error=>{if(alive){setPrices([]);setPriceError(error.message||'Could not load modality prices.')}}).finally(()=>alive&&setPricesLoading(false));
+  return()=>{alive=false};
+ },[request,priceReload]);
+
+ useEffect(()=>{
+  let alive=true;setTodayLoading(true);
+  fetchOrderCountsForDate(request,selectedOrderDate).then(counts=>{if(alive)setTodayCounts(orderStatuses.map(item=>({...item,value:counts[item.status]})))}).catch(()=>{if(alive)setTodayCounts(orderStatuses.map(item=>({...item,value:'—'})))}).finally(()=>alive&&setTodayLoading(false));
+  return()=>{alive=false};
+ },[selectedOrderDate,request]);
 
  useEffect(()=>{
   let alive=true;setRevenueLoading(true);
@@ -48,8 +57,8 @@ export default function AdminDashboard({user,onNavigate,onAction,available=[],re
  return <div className="role-dashboard dashboard-admin">
   <section className="dashboard-hero"><div className="dashboard-hero-copy"><span className="eyebrow">ADMINISTRATION WORKSPACE</span><h1>Good day, {firstName}</h1><p>Monitor registered accounts and manage access across the organization.</p></div><div className="dashboard-hero-mark"><ShieldCheck size={28}/></div></section>
   <section className="dashboard-metrics">{stats.map((item,index)=>{const Glyph=Users;return <button key={item.label} type="button" className="dashboard-metric is-clickable" onClick={()=>onNavigate(targets[index][0],targets[index][1])}><span className={`metric-icon metric-${index}`}><Glyph size={18}/></span><span className="metric-label">{item.label}</span><strong>{loading?'—':item.value??'—'}</strong><small>Registered accounts</small><ChevronRight size={16} className="metric-arrow"/></button>})}</section>
-  <section className="dashboard-panel price-management-panel"><div className="dashboard-panel-heading"><div><span className="eyebrow">PRICING</span><h2>Modality prices</h2><p>Keep imaging prices up to date for each modality.</p></div><button className="secondary-btn" type="button" onClick={()=>{const endpoint=available.find(item=>item.key==='price-update');if(endpoint)onAction(endpoint)}}><Wallet size={16}/>Update a price</button></div></section>
-  <section className="order-count-section"><div className="order-count-heading"><div><span className="eyebrow">TODAY</span><h2>Orders scheduled today</h2><p>Today’s order totals by status.</p></div><button className="text-btn" onClick={()=>onNavigate('Orders')}>View orders <ArrowRight size={14}/></button></div><div className="order-count-cards">{todayCounts.map(item=>{const Glyph=item.icon;return <article className={`order-count-card order-count-${item.tone}`} key={item.status}><span className="order-count-icon"><Glyph size={19}/></span><span className="order-count-label">{item.label}</span><strong>{todayLoading?'—':item.value??'—'}</strong><small>Today</small></article>})}</div></section>
+  <div className="price-overview-grid"><section className="dashboard-panel price-list-panel"><div className="dashboard-panel-heading"><div><span className="eyebrow">PRICING</span><h2>Modality prices</h2><p>Current price for each imaging modality.</p></div><button className="text-btn" type="button" onClick={()=>setPriceReload(value=>value+1)} aria-label="Refresh prices" title="Refresh prices"><RefreshCw size={15}/></button></div>{pricesLoading?<div className="price-list-state">Loading prices…</div>:priceError?<div className="price-list-state price-list-error">{priceError}</div>:prices.length===0?<div className="price-list-state">No modality prices are available.</div>:<div className="price-list">{prices.map((item,index)=>{const modality=item.modality??item.Modality??item.name??item.Name;const modalityNames=['MRI','CT','X-ray','Ultrasound','PET','Mammography','Fluoroscopy'];const label=typeof modality==='number'?modalityNames[modality]??`Modality ${modality}`:({XRay:'X-ray'}[modality]||String(modality??'Modality'));const amount=Number(item.amount??item.Amount);return <div className="price-list-row" key={item.id??item.Id??label??index}><span>{label}</span><strong>{Number.isFinite(amount)?amount.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}):'—'}</strong></div>})}</div>}</section><section className="dashboard-panel price-management-panel"><div className="price-manage-icon"><Wallet size={20}/></div><span className="eyebrow">PRICE MANAGEMENT</span><h2>Update prices</h2><p>Choose a modality and enter its new price.</p><button className="primary-btn" type="button" onClick={()=>{const endpoint=available.find(item=>item.key==='price-update');if(endpoint)onAction(endpoint)}}>Change prices <ArrowRight size={15}/></button></section></div>
+  <section className="order-count-section"><div className="order-count-heading"><div><span className="eyebrow">ORDERS BY DATE</span><h2>Orders scheduled on {new Date(`${selectedOrderDate}T00:00:00`).toLocaleDateString(undefined,{dateStyle:'medium'})}</h2><p>Order totals by status for the selected date.</p></div><div className="order-count-controls"><label className="dashboard-date-filter"><CalendarDays size={16}/><span>Date</span><input type="date" value={selectedOrderDate} onChange={event=>event.target.value&&setSelectedOrderDate(event.target.value)}/></label><button className="text-btn" onClick={()=>onNavigate('Orders')}>View orders <ArrowRight size={14}/></button></div></div><div className="order-count-cards">{todayCounts.map(item=>{const Glyph=item.icon;return <article className={`order-count-card order-count-${item.tone}`} key={item.status}><span className="order-count-icon"><Glyph size={19}/></span><span className="order-count-label">{item.label}</span><strong>{todayLoading?'—':item.value??'—'}</strong><small>{selectedOrderDate===localDateKey(new Date())?'Today':new Date(`${selectedOrderDate}T00:00:00`).toLocaleDateString(undefined,{month:'short',day:'numeric'})}</small></article>})}</div></section>
   <WeeklyRevenueGraph days={weeklyRevenue} loading={revenueLoading} weekLabel={weekLabel} canGoForward={weekOffset<0} onPrevious={()=>setWeekOffset(offset=>offset-1)} onNext={()=>setWeekOffset(offset=>Math.min(0,offset+1))}/>
  </div>;
 }

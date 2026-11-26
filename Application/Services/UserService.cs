@@ -104,12 +104,13 @@ namespace Application.Services
 
             if (dto.EmailAddress != null)
             {
-                bool exist = await _unitOfWork.Repository<User>().AnyAsync(u => u.Email == dto.EmailAddress);
+                var email = dto.EmailAddress.Trim();
+                bool exist = await _unitOfWork.Repository<User>().AnyAsync(u => u.Id != id && u.Email != null && u.Email.ToLower() == email.ToLower());
                 if (exist)
                 {
                     throw new ArgumentException("The email you entered is already registerd");
                 }
-                user.Email = dto.EmailAddress;
+                user.Email = email;
             }
 
             await _unitOfWork.SaveChangesAsync();
@@ -140,12 +141,13 @@ namespace Application.Services
 
             if (dto.EmailAddress != null)
             {
-                bool exist = await _unitOfWork.Repository<User>().AnyAsync(u => u.Email == dto.EmailAddress);
+                var email = dto.EmailAddress.Trim();
+                bool exist = await _unitOfWork.Repository<User>().AnyAsync(u => u.Id != id && u.Email != null && u.Email.ToLower() == email.ToLower());
                 if (exist)
                 {
                     throw new ArgumentException("The email you entered is already registerd");
                 }
-                user.Email = dto.EmailAddress;
+                user.Email = email;
             }
 
             await _unitOfWork.SaveChangesAsync();

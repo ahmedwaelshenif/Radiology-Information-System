@@ -114,8 +114,14 @@ namespace RadiologyInformationSystem.Controllers
         public async Task<IActionResult> UpdateMyUser(UpdateUserDto dto)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-
-            await _userService.UpdateMyInformation(dto, userId);
+            try
+            {
+                await _userService.UpdateMyInformation(dto, userId);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
             return NoContent();
         }
 
